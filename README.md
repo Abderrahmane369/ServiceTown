@@ -1,7 +1,24 @@
-# Portfolio
+# README
 
-## Marketplace Project
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-### Description
+Things you may want to cover:
 
-This project is a marketplace application where users can buy and sell items. It's built using Ruby on rails.
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
