@@ -1,0 +1,52 @@
+@mixin noto-sans($weight)
+    font-family: "Noto Sans", sans-serif
+    font-optical-sizing: auto
+    font-weight: $weight
+    font-style: normal
+    font-variation-settings: "wdth" 100
+
+@mixin fredoka($weight)
+    font-family: "Fredoka", sans-serif
+    font-optical-sizing: auto
+    font-weight: $weight
+    font-style: normal
+    font-variation-settings: "wdth" 100
+
+.header
+    background-color: #14213D
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+    .ant-menu-dark.ant-menu-horizontal .ant-menu-item
+        color: #EBEBEB
+
+    .navbar
+        @include noto-sans(400)
+
+        background-color: #14213D
+        margin-left: 30px
+
+    .st-logo
+        @include fredoka(510)
+
+        font-size: 30px
+        color: #fff
+        cursor: pointer
+
+    .authbar
+
+        .login-button
+            @include noto-sans(400)
+
+            color: #EBEBEB
+            font-size: 13px
+
+            :hover
+                color: #000
+
+        .signup-button
+            @include noto-sans(400)
+
+            color: #EBEBEB
+            font-size: 13px

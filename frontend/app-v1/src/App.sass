@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap')
+@import 'styles/header'
+@mixin fredoka($weight)
+    font-family: "Fredoka", sans-serif
+    font-optical-sizing: auto
+    font-weight: $weight
+    font-style: normal
+    font-variation-settings: "wdth" 100
+
+@mixin noto-sans($weight)
+    font-family: "Noto Sans", sans-serif
+    font-optical-sizing: auto
+    font-weight: $weight
+    font-style: normal
+    font-variation-settings: "wdth" 100
+*
+    margin: 0
+    padding: 0
+
+body
+    @include fredoka(300)
+
+
