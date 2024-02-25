@@ -1,24 +1,16 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Web Marketplace
 
-Things you may want to cover:
+### Introduction
+Welcome to our Web Marketplace project! This project aims to create a comprehensive online marketplace where users can buy and sell goods or services.
 
-* Ruby version
+### Features
+. User Interface: Clean and intuitive user interface designed with React components.
+. API Integration: Utilizes Ruby on Rails API to fetch and manipulate data.
+. Data Display: Displays data retrieved from the Ruby API in a structured format.
+. User Interaction: Allows users to perform various actions such as viewing, adding, updating, and deleting data through API requests.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Technologies Used
+Frontend: React.js
+Backend: Ruby on Rails
