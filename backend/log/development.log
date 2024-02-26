@@ -55,3 +55,52 @@ FOREIGN KEY (`user_id`)
   [1m[36mActiveRecord::SchemaMigration Create (21.8ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240225220520')[0m
   [1m[35m (0.7ms)[0m  [1m[34mSELECT RELEASE_LOCK('4373051316486144390')[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (8.1ms)[0m  [1m[35mCREATE DATABASE `portfolio_development` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE DATABASE `portfolio_test` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (25.5ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY)[0m
+  [1m[35m (21.2ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT GET_LOCK('4373051316486144390', 0)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (3.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.5ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+  [1m[36mActiveRecord::InternalMetadata Create (2.6ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2024-02-26 07:22:38.692047', '2024-02-26 07:22:38.692052')[0m
+Migrating to CreateServiceCategories (20240225215651)
+  [1m[35m (18.7ms)[0m  [1m[35mCREATE TABLE `service_categories` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `description` text, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.1ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240225215651')[0m
+Migrating to CreateCities (20240225215835)
+  [1m[35m (19.3ms)[0m  [1m[35mCREATE TABLE `cities` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (3.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240225215835')[0m
+Migrating to CreateUsers (20240225215929)
+  [1m[35m (71.3ms)[0m  [1m[35mCREATE TABLE `users` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `email` text, `password` text, `phone` text, `city_id` bigint NOT NULL, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL, INDEX `index_users_on_city_id` (`city_id`), CONSTRAINT `fk_rails_9c7442481a`
+FOREIGN KEY (`city_id`)
+  REFERENCES `cities` (`id`)
+)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240225215929')[0m
+Migrating to CreateServices (20240225220117)
+  [1m[35m (80.9ms)[0m  [1m[35mCREATE TABLE `services` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `price` float(24), `description` text, `availability` tinyint(1), `service_category_id` bigint NOT NULL, `user_id` bigint NOT NULL, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL, INDEX `index_services_on_service_category_id` (`service_category_id`), INDEX `index_services_on_user_id` (`user_id`), CONSTRAINT `fk_rails_3f893384d8`
+FOREIGN KEY (`service_category_id`)
+  REFERENCES `service_categories` (`id`)
+, CONSTRAINT `fk_rails_51a813203f`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.1ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240225220117')[0m
+Migrating to CreateReviews (20240225220403)
+  [1m[35m (87.4ms)[0m  [1m[35mCREATE TABLE `reviews` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `description` text, `service_id` bigint NOT NULL, `user_id` bigint NOT NULL, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL, INDEX `index_reviews_on_service_id` (`service_id`), INDEX `index_reviews_on_user_id` (`user_id`), CONSTRAINT `fk_rails_ad64ae3630`
+FOREIGN KEY (`service_id`)
+  REFERENCES `services` (`id`)
+, CONSTRAINT `fk_rails_74a66bd6c5`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240225220403')[0m
+Migrating to CreateBookings (20240225220520)
+  [1m[35m (60.6ms)[0m  [1m[35mCREATE TABLE `bookings` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `service_id` bigint NOT NULL, `user_id` bigint NOT NULL, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL, INDEX `index_bookings_on_service_id` (`service_id`), INDEX `index_bookings_on_user_id` (`user_id`), CONSTRAINT `fk_rails_1707d5de0d`
+FOREIGN KEY (`service_id`)
+  REFERENCES `services` (`id`)
+, CONSTRAINT `fk_rails_ef0571f117`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (3.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240225220520')[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT RELEASE_LOCK('4373051316486144390')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
