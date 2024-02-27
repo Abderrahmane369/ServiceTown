@@ -347,3 +347,190 @@ Migrating to AddUuidTriggerToBookings (20240227112802)
   [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
   [1m[36mCity Create (0.9ms)[0m  [1m[32mINSERT INTO `cities` (`name`, `created_at`, `updated_at`) VALUES ('Rabat', '2024-02-27 18:00:59.417157', '2024-02-27 18:00:59.417157')[0m
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE DATABASE `portfolio_development` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE DATABASE `portfolio_test` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (11.8ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY)[0m
+  [1m[35m (10.1ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('4373051316486144390', 0)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.6ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2024-02-27 18:04:16.072827', '2024-02-27 18:04:16.072831')[0m
+Migrating to CreateServiceCategories (20240226154756)
+  [1m[35m (10.3ms)[0m  [1m[35mCREATE TABLE `service_categories` (`id` varbinary(16) NOT NULL PRIMARY KEY, `name` varchar(255), `description` text, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.5ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240226154756')[0m
+Migrating to CreateCities (20240226154817)
+  [1m[35m (9.5ms)[0m  [1m[35mCREATE TABLE `cities` (`id` varbinary(16) NOT NULL PRIMARY KEY, `name` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240226154817')[0m
+Migrating to CreateUsers (20240226154843)
+  [1m[35m (10.8ms)[0m  [1m[35mCREATE TABLE `users` (`id` varbinary(16) NOT NULL PRIMARY KEY, `city_id` varbinary(16), `name` varchar(255), `email` text, `password` text, `phone` text, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[35m (46.5ms)[0m  [1m[35mALTER TABLE `users` ADD CONSTRAINT `fk_rails_9c7442481a`
+FOREIGN KEY (`city_id`)
+  REFERENCES `cities` (`id`)
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240226154843')[0m
+Migrating to CreateServices (20240226154912)
+  [1m[35m (14.4ms)[0m  [1m[35mCREATE TABLE `services` (`id` varbinary(16) NOT NULL PRIMARY KEY, `name` varchar(255), `price` float(24), `description` text, `availability` tinyint(1), `service_category_id` varbinary(16), `user_id` varbinary(16), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[35m (48.4ms)[0m  [1m[35mALTER TABLE `services` ADD CONSTRAINT `fk_rails_3f893384d8`
+FOREIGN KEY (`service_category_id`)
+  REFERENCES `service_categories` (`id`)
+[0m
+  [1m[35m (47.6ms)[0m  [1m[35mALTER TABLE `services` ADD CONSTRAINT `fk_rails_51a813203f`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.5ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240226154912')[0m
+Migrating to CreateReviews (20240226154933)
+  [1m[35m (13.1ms)[0m  [1m[35mCREATE TABLE `reviews` (`id` varbinary(16) NOT NULL PRIMARY KEY, `description` text, `service_id` varbinary(16), `user_id` varbinary(16), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[35m (43.3ms)[0m  [1m[35mALTER TABLE `reviews` ADD CONSTRAINT `fk_rails_ad64ae3630`
+FOREIGN KEY (`service_id`)
+  REFERENCES `services` (`id`)
+[0m
+  [1m[35m (41.6ms)[0m  [1m[35mALTER TABLE `reviews` ADD CONSTRAINT `fk_rails_74a66bd6c5`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240226154933')[0m
+Migrating to CreateBookings (20240226154950)
+  [1m[35m (10.4ms)[0m  [1m[35mCREATE TABLE `bookings` (`id` varbinary(16) NOT NULL PRIMARY KEY, `service_id` varbinary(16), `user_id` varbinary(16), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[35m (44.3ms)[0m  [1m[35mALTER TABLE `bookings` ADD CONSTRAINT `fk_rails_1707d5de0d`
+FOREIGN KEY (`service_id`)
+  REFERENCES `services` (`id`)
+[0m
+  [1m[35m (40.7ms)[0m  [1m[35mALTER TABLE `bookings` ADD CONSTRAINT `fk_rails_ef0571f117`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240226154950')[0m
+Migrating to AddRoleToUsers (20240226223312)
+  [1m[35m (17.0ms)[0m  [1m[35mALTER TABLE `users` ADD `role` varchar(255)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240226223312')[0m
+Migrating to AddUuidTriggerToCities (20240227103519)
+  [1m[35m (11.5ms)[0m  [1m[35m      CREATE TRIGGER `cities_before_insert` BEFORE INSERT ON `cities`
+      FOR EACH ROW BEGIN
+        IF NEW.id IS NULL THEN
+          SET NEW.id = UUID_TO_BIN(UUID(), true);
+        END IF;
+      END;
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.0ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240227103519')[0m
+Migrating to AddUuidTriggerToServiceCategories (20240227111111)
+  [1m[35m (5.0ms)[0m  [1m[35m      CREATE TRIGGER `service_categories_before_insert` BEFORE INSERT ON `service_categories`
+      FOR EACH ROW BEGIN
+        IF NEW.id IS NULL THEN
+          SET NEW.id = UUID_TO_BIN(UUID(), true);
+        END IF;
+      END;
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240227111111')[0m
+Migrating to AddUuidTriggerToUsers (20240227111704)
+  [1m[35m (5.0ms)[0m  [1m[35m      CREATE TRIGGER `users_before_insert` BEFORE INSERT ON `users`
+      FOR EACH ROW BEGIN
+        IF NEW.id IS NULL THEN
+          SET NEW.id = UUID_TO_BIN(UUID(), true);
+        END IF;
+      END;
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240227111704')[0m
+Migrating to AddUuidTriggerToServices (20240227111954)
+  [1m[35m (6.5ms)[0m  [1m[35m      CREATE TRIGGER `services_before_insert` BEFORE INSERT ON `services`
+      FOR EACH ROW BEGIN
+        IF NEW.id IS NULL THEN
+          SET NEW.id = UUID_TO_BIN(UUID(), true);
+        END IF;
+      END;
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240227111954')[0m
+Migrating to AddUuidTriggerToReviews (20240227112330)
+  [1m[35m (5.9ms)[0m  [1m[35m      CREATE TRIGGER `reviews_before_insert` BEFORE INSERT ON `reviews`
+      FOR EACH ROW BEGIN
+        IF NEW.id IS NULL THEN
+          SET NEW.id = UUID_TO_BIN(UUID(), true);
+        END IF;
+      END;
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240227112330')[0m
+Migrating to AddUuidTriggerToBookings (20240227112802)
+  [1m[35m (6.5ms)[0m  [1m[35m      CREATE TRIGGER `bookings_before_insert` BEFORE INSERT ON `bookings`
+      FOR EACH ROW BEGIN
+        IF NEW.id IS NULL THEN
+          SET NEW.id = UUID_TO_BIN(UUID(), true);
+        END IF;
+      END;
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.1ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240227112802')[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT RELEASE_LOCK('4373051316486144390')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCity Create (8.5ms)[0m  [1m[32mINSERT INTO `cities` (`name`, `created_at`, `updated_at`) VALUES ('Rabat', '2024-02-27 18:04:33.334417', '2024-02-27 18:04:33.334417')[0m
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE DATABASE `portfolio_development` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE DATABASE `portfolio_test` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (15.8ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY)[0m
+  [1m[35m (12.3ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('4373051316486144390', 0)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+  [1m[36mActiveRecord::InternalMetadata Create (2.1ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2024-02-27 20:02:20.523118', '2024-02-27 20:02:20.523127')[0m
+Migrating to CreateCities (20240227195951)
+  [1m[35m (12.2ms)[0m  [1m[35mCREATE TABLE `cities` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.0ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240227195951')[0m
+Migrating to CreateServiceCategories (20240227200045)
+  [1m[35m (14.1ms)[0m  [1m[35mCREATE TABLE `service_categories` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `description` text, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240227200045')[0m
+Migrating to CreateUsers (20240227200108)
+  [1m[35m (60.7ms)[0m  [1m[35mCREATE TABLE `users` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `email` text, `password` text, `phone` text, `city_id` bigint NOT NULL, `role` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL, INDEX `index_users_on_city_id` (`city_id`), CONSTRAINT `fk_rails_9c7442481a`
+FOREIGN KEY (`city_id`)
+  REFERENCES `cities` (`id`)
+)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240227200108')[0m
+Migrating to CreateServices (20240227200133)
+  [1m[35m (37.8ms)[0m  [1m[35mCREATE TABLE `services` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `price` float(24), `description` text, `availability` tinyint(1), `service_category_id` bigint NOT NULL, `user_id` bigint NOT NULL, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL, INDEX `index_services_on_service_category_id` (`service_category_id`), INDEX `index_services_on_user_id` (`user_id`), CONSTRAINT `fk_rails_3f893384d8`
+FOREIGN KEY (`service_category_id`)
+  REFERENCES `service_categories` (`id`)
+, CONSTRAINT `fk_rails_51a813203f`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240227200133')[0m
+Migrating to CreateReviews (20240227200155)
+  [1m[35m (43.4ms)[0m  [1m[35mCREATE TABLE `reviews` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `description` text, `service_id` bigint NOT NULL, `user_id` bigint NOT NULL, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL, INDEX `index_reviews_on_service_id` (`service_id`), INDEX `index_reviews_on_user_id` (`user_id`), CONSTRAINT `fk_rails_ad64ae3630`
+FOREIGN KEY (`service_id`)
+  REFERENCES `services` (`id`)
+, CONSTRAINT `fk_rails_74a66bd6c5`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.5ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240227200155')[0m
+Migrating to CreateBookings (20240227200207)
+  [1m[35m (46.5ms)[0m  [1m[35mCREATE TABLE `bookings` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `service_id` bigint NOT NULL, `user_id` bigint NOT NULL, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL, INDEX `index_bookings_on_service_id` (`service_id`), INDEX `index_bookings_on_user_id` (`user_id`), CONSTRAINT `fk_rails_1707d5de0d`
+FOREIGN KEY (`service_id`)
+  REFERENCES `services` (`id`)
+, CONSTRAINT `fk_rails_ef0571f117`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240227200207')[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT RELEASE_LOCK('4373051316486144390')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('4373051316486144390', 0)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+Migrating to AddUuidToTables (20240227200316)
+  [1m[35m (23.6ms)[0m  [1m[35mALTER TABLE `users` ADD `uuid` varchar(255)[0m
+  [1m[35m (15.4ms)[0m  [1m[35mALTER TABLE `cities` ADD `uuid` varchar(255)[0m
+  [1m[35m (18.0ms)[0m  [1m[35mALTER TABLE `services` ADD `uuid` varchar(255)[0m
+  [1m[35m (14.2ms)[0m  [1m[35mALTER TABLE `bookings` ADD `uuid` varchar(255)[0m
+  [1m[35m (12.8ms)[0m  [1m[35mALTER TABLE `reviews` ADD `uuid` varchar(255)[0m
+  [1m[35m (14.6ms)[0m  [1m[35mALTER TABLE `service_categories` ADD `uuid` varchar(255)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240227200316')[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT RELEASE_LOCK('4373051316486144390')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCity Create (1.8ms)[0m  [1m[32mINSERT INTO `cities` (`name`, `created_at`, `updated_at`, `uuid`) VALUES ('City', '2024-02-27 20:06:20.598454', '2024-02-27 20:06:20.598454', '9043d692-5e0b-4be5-a8d1-200a9c71ae56')[0m
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCity Create (1.1ms)[0m  [1m[32mINSERT INTO `cities` (`name`, `created_at`, `updated_at`, `uuid`) VALUES ('Rabat', '2024-02-27 20:06:30.472538', '2024-02-27 20:06:30.472538', '5cd55cec-1e7f-47b9-bf36-39f0e628e415')[0m
+  [1m[36mTRANSACTION (7.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mServiceCategory Create (1.1ms)[0m  [1m[32mINSERT INTO `service_categories` (`name`, `description`, `created_at`, `updated_at`, `uuid`) VALUES ('Plumber', 'Lorem Ipsum', '2024-02-27 20:07:37.566301', '2024-02-27 20:07:37.566301', '391cfcce-8f38-4ea3-8392-ef4a73205747')[0m
+  [1m[36mTRANSACTION (8.3ms)[0m  [1m[35mCOMMIT[0m

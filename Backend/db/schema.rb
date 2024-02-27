@@ -10,62 +10,68 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_27_112802) do
-  create_table "bookings", id: { type: :binary, limit: 16 }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.binary "service_id", limit: 16
-    t.binary "user_id", limit: 16
+ActiveRecord::Schema[7.1].define(version: 2024_02_27_200316) do
+  create_table "bookings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "service_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["service_id"], name: "fk_rails_1707d5de0d"
-    t.index ["user_id"], name: "fk_rails_ef0571f117"
+    t.string "uuid"
+    t.index ["service_id"], name: "index_bookings_on_service_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
-  create_table "cities", id: { type: :binary, limit: 16 }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "cities", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uuid"
   end
 
-  create_table "reviews", id: { type: :binary, limit: 16 }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "reviews", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "description"
-    t.binary "service_id", limit: 16
-    t.binary "user_id", limit: 16
+    t.bigint "service_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["service_id"], name: "fk_rails_ad64ae3630"
-    t.index ["user_id"], name: "fk_rails_74a66bd6c5"
+    t.string "uuid"
+    t.index ["service_id"], name: "index_reviews_on_service_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
-  create_table "service_categories", id: { type: :binary, limit: 16 }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "service_categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uuid"
   end
 
-  create_table "services", id: { type: :binary, limit: 16 }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "services", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.float "price"
     t.text "description"
     t.boolean "availability"
-    t.binary "service_category_id", limit: 16
-    t.binary "user_id", limit: 16
+    t.bigint "service_category_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["service_category_id"], name: "fk_rails_3f893384d8"
-    t.index ["user_id"], name: "fk_rails_51a813203f"
+    t.string "uuid"
+    t.index ["service_category_id"], name: "index_services_on_service_category_id"
+    t.index ["user_id"], name: "index_services_on_user_id"
   end
 
-  create_table "users", id: { type: :binary, limit: 16 }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.binary "city_id", limit: 16
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.text "email"
     t.text "password"
     t.text "phone"
+    t.bigint "city_id", null: false
+    t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "role"
-    t.index ["city_id"], name: "fk_rails_9c7442481a"
+    t.string "uuid"
+    t.index ["city_id"], name: "index_users_on_city_id"
   end
 
   add_foreign_key "bookings", "services"

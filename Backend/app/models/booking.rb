@@ -1,4 +1,4 @@
 class Booking < ApplicationRecord
-  belongs_to :service, type: :binary
-  belongs_to :user, type: :binary
+  belongs_to :service
+  belongs_to :user
 end
