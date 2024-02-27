@@ -120,6 +120,7 @@ FOREIGN KEY (`user_id`)
   [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
   [1m[35m (3.8ms)[0m  [1m[35mCREATE DATABASE `portfolio_development` DEFAULT CHARACTER SET `utf8mb4`[0m
   [1m[35m (4.9ms)[0m  [1m[35mCREATE DATABASE `portfolio_test` DEFAULT CHARACTER SET `utf8mb4`[0m
+<<<<<<< HEAD
   [1m[35m (7.7ms)[0m  [1m[35mCREATE DATABASE `portfolio_development` DEFAULT CHARACTER SET `utf8mb4`[0m
   [1m[35m (4.5ms)[0m  [1m[35mCREATE DATABASE `portfolio_test` DEFAULT CHARACTER SET `utf8mb4`[0m
   [1m[35m (21.4ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY)[0m
@@ -237,3 +238,112 @@ FOREIGN KEY (`user_id`)
   [1m[36mActiveRecord::SchemaMigration Create (1.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240226154950')[0m
   [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('4373051316486144390')[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+=======
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT GET_LOCK('4373051316486144390', 0)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (9.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (4.5ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+Migrating to AddRoleToUsers (20240226223312)
+  [1m[35m (304.4ms)[0m  [1m[35mALTER TABLE `users` ADD `role` varchar(255)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (13.8ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240226223312')[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT RELEASE_LOCK('4373051316486144390')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCity Create (18.2ms)[0m  [1m[32mINSERT INTO `cities` (`name`, `created_at`, `updated_at`) VALUES ('Niamey', '2024-02-27 10:29:18.960461', '2024-02-27 10:29:18.960461')[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT GET_LOCK('4373051316486144390', 0)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (3.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.4ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+Migrating to AddUuidTriggerToCities (20240227103519)
+  [1m[35m (108.3ms)[0m  [1m[35m      CREATE TRIGGER `cities_before_insert` BEFORE INSERT ON `cities`
+      FOR EACH ROW BEGIN
+        IF NEW.id IS NULL THEN
+          SET NEW.id = UUID_TO_BIN(UUID(), true);
+        END IF;
+      END;
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (26.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240227103519')[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT RELEASE_LOCK('4373051316486144390')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (3.9ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCity Create (14.1ms)[0m  [1m[32mINSERT INTO `cities` (`name`, `created_at`, `updated_at`) VALUES ('Niamey', '2024-02-27 10:40:40.399243', '2024-02-27 10:40:40.399243')[0m
+  [1m[36mTRANSACTION (27.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT GET_LOCK('4373051316486144390', 0)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+Migrating to AddUuidTriggerToServiceCategories (20240227111111)
+  [1m[35m (62.6ms)[0m  [1m[35m      CREATE TRIGGER `service_categories_before_insert` BEFORE INSERT ON `service_categories`
+      FOR EACH ROW BEGIN
+        IF NEW.id IS NULL THEN
+          SET NEW.id = UUID_TO_BIN(UUID(), true);
+        END IF;
+      END;
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (13.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240227111111')[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT RELEASE_LOCK('4373051316486144390')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT GET_LOCK('4373051316486144390', 0)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.9ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.7ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+Migrating to AddUuidTriggerToUsers (20240227111704)
+  [1m[35m (79.1ms)[0m  [1m[35m      CREATE TRIGGER `users_before_insert` BEFORE INSERT ON `users`
+      FOR EACH ROW BEGIN
+        IF NEW.id IS NULL THEN
+          SET NEW.id = UUID_TO_BIN(UUID(), true);
+        END IF;
+      END;
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (14.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240227111704')[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT RELEASE_LOCK('4373051316486144390')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT GET_LOCK('4373051316486144390', 0)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (3.8ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+Migrating to AddUuidTriggerToServices (20240227111954)
+  [1m[35m (56.7ms)[0m  [1m[35m      CREATE TRIGGER `services_before_insert` BEFORE INSERT ON `services`
+      FOR EACH ROW BEGIN
+        IF NEW.id IS NULL THEN
+          SET NEW.id = UUID_TO_BIN(UUID(), true);
+        END IF;
+      END;
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (13.6ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240227111954')[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT RELEASE_LOCK('4373051316486144390')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT GET_LOCK('4373051316486144390', 0)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.0ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+Migrating to AddUuidTriggerToReviews (20240227112330)
+  [1m[35m (64.4ms)[0m  [1m[35m      CREATE TRIGGER `reviews_before_insert` BEFORE INSERT ON `reviews`
+      FOR EACH ROW BEGIN
+        IF NEW.id IS NULL THEN
+          SET NEW.id = UUID_TO_BIN(UUID(), true);
+        END IF;
+      END;
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (12.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240227112330')[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT RELEASE_LOCK('4373051316486144390')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT GET_LOCK('4373051316486144390', 0)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.0ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+Migrating to AddUuidTriggerToBookings (20240227112802)
+  [1m[35m (59.0ms)[0m  [1m[35m      CREATE TRIGGER `bookings_before_insert` BEFORE INSERT ON `bookings`
+      FOR EACH ROW BEGIN
+        IF NEW.id IS NULL THEN
+          SET NEW.id = UUID_TO_BIN(UUID(), true);
+        END IF;
+      END;
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (14.9ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240227112802')[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT RELEASE_LOCK('4373051316486144390')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCity Create (5.2ms)[0m  [1m[32mINSERT INTO `cities` (`name`, `created_at`, `updated_at`) VALUES ('Rabat', '2024-02-27 12:09:44.201866', '2024-02-27 12:09:44.201866')[0m
+  [1m[36mTRANSACTION (12.5ms)[0m  [1m[35mCOMMIT[0m
+>>>>>>> 954f351832d21b00d53b97e6dff0dbd12ee3d63f
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCity Create (1.4ms)[0m  [1m[32mINSERT INTO `cities` (`name`, `created_at`, `updated_at`) VALUES ('Rabat', '2024-02-27 18:00:02.444298', '2024-02-27 18:00:02.444298')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCity Create (0.9ms)[0m  [1m[32mINSERT INTO `cities` (`name`, `created_at`, `updated_at`) VALUES ('Rabat', '2024-02-27 18:00:59.417157', '2024-02-27 18:00:59.417157')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
