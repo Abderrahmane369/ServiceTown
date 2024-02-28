@@ -4,12 +4,19 @@ class ReviewsController < ApplicationController
   # GET /reviews
   def index
     @reviews = Review.all
-
-    render json: @reviews
+    reviews_hash = @reviews.as_json
+    reviews_hash.each do |review|
+      review['id'] = review['uuid']
+      review.delete('uuid')
+    end
+    render json: reviews_hash
   end
 
   # GET /reviews/1
   def show
+    review = @review.as_json
+    review['id'] = review['uuid']
+    review.delete('uuid')
     render json: @review
   end
 

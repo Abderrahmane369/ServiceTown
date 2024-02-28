@@ -4,13 +4,20 @@ class BookingsController < ApplicationController
   # GET /bookings
   def index
     @bookings = Booking.all
-
-    render json: @bookings
+    bookings_hash = @bookings.as_json
+    bookings_hash.each do |booking|
+      booking['id'] = booking['uuid']
+      booking.delete('uuid')
+    end
+    render json: bookings_hash
   end
 
   # GET /bookings/1
   def show
-    render json: @booking
+    booking = @booking.as_json
+    booking['id'] = booking['uuid']
+    booking.delete('uuid')
+    render json: booking
   end
 
   # POST /bookings

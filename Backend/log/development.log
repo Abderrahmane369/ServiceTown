@@ -553,3 +553,221 @@ Started GET "/favicon.ico" for 127.0.0.1 at 2024-02-27 22:43:36 +0100
   
 ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
   
+Started GET "/" for 127.0.0.1 at 2024-02-28 20:01:30 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (9.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/railties-7.1.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/railties-7.1.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.9ms | Allocations: 376)
+Completed 200 OK in 275ms (Views: 56.0ms | ActiveRecord: 0.0ms | Allocations: 4784)
+
+
+Started GET "/cities" for 127.0.0.1 at 2024-02-28 20:01:41 +0100
+Processing by CitiesController#index as HTML
+  [1m[36mCity Load (7.9ms)[0m  [1m[34mSELECT `cities`.* FROM `cities`[0m
+  ↳ app/controllers/cities_controller.rb:8:in `index'
+Completed 200 OK in 225ms (Views: 42.1ms | ActiveRecord: 18.1ms | Allocations: 16030)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2024-02-28 20:01:41 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/cities/1" for 127.0.0.1 at 2024-02-28 20:02:00 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCity Load (0.5ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/cities_controller.rb:44:in `set_city'
+Completed 200 OK in 23ms (Views: 0.7ms | ActiveRecord: 0.5ms | Allocations: 1678)
+
+
+Started GET "/" for 127.0.0.1 at 2024-02-28 20:06:45 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/railties-7.1.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/railties-7.1.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.8ms | Allocations: 376)
+Completed 200 OK in 46ms (Views: 8.2ms | ActiveRecord: 0.0ms | Allocations: 4779)
+
+
+Started GET "/cities" for 127.0.0.1 at 2024-02-28 20:06:57 +0100
+Processing by CitiesController#index as HTML
+  [1m[36mCity Load (1.2ms)[0m  [1m[34mSELECT `cities`.* FROM `cities`[0m
+  ↳ app/controllers/cities_controller.rb:7:in `index'
+Completed 200 OK in 62ms (Views: 0.6ms | ActiveRecord: 8.1ms | Allocations: 16049)
+
+
+Started GET "/cities" for 127.0.0.1 at 2024-02-28 20:08:02 +0100
+Processing by CitiesController#index as HTML
+  [1m[36mCity Load (0.5ms)[0m  [1m[34mSELECT `cities`.* FROM `cities`[0m
+  ↳ app/controllers/cities_controller.rb:7:in `index'
+Completed 200 OK in 20ms (Views: 0.7ms | ActiveRecord: 5.1ms | Allocations: 4041)
+
+
+Started GET "/cities" for 127.0.0.1 at 2024-02-28 20:10:59 +0100
+Processing by CitiesController#index as HTML
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 976)
+
+
+  
+NoMethodError (undefined method `to_hash' for an instance of ActiveRecord::Relation):
+  
+app/controllers/cities_controller.rb:7:in `index'
+Started GET "/cities" for 127.0.0.1 at 2024-02-28 20:11:18 +0100
+Processing by CitiesController#index as HTML
+  [1m[36mCity Load (0.6ms)[0m  [1m[34mSELECT `cities`.* FROM `cities`[0m
+  ↳ app/controllers/cities_controller.rb:7:in `to_h'
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 4.3ms | Allocations: 3874)
+
+
+  
+TypeError (wrong element type City (expected array)):
+  
+app/controllers/cities_controller.rb:7:in `to_h'
+app/controllers/cities_controller.rb:7:in `index'
+Started GET "/cities" for 127.0.0.1 at 2024-02-28 20:12:11 +0100
+Processing by CitiesController#index as HTML
+  [1m[36mCity Load (0.5ms)[0m  [1m[34mSELECT `cities`.* FROM `cities`[0m
+  ↳ app/controllers/cities_controller.rb:7:in `index'
+Completed 200 OK in 16ms (Views: 1.6ms | ActiveRecord: 3.4ms | Allocations: 3993)
+
+
+Started GET "/cities" for 127.0.0.1 at 2024-02-28 20:17:34 +0100
+Processing by CitiesController#index as HTML
+  [1m[36mCity Load (0.5ms)[0m  [1m[34mSELECT `cities`.* FROM `cities`[0m
+  ↳ app/controllers/cities_controller.rb:7:in `index'
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 4.4ms | Allocations: 3922)
+
+
+  
+TypeError (no implicit conversion of String into Integer):
+  
+app/controllers/cities_controller.rb:9:in `[]'
+app/controllers/cities_controller.rb:9:in `block in index'
+app/controllers/cities_controller.rb:8:in `each'
+app/controllers/cities_controller.rb:8:in `index'
+Started GET "/cities" for 127.0.0.1 at 2024-02-28 20:20:14 +0100
+Processing by CitiesController#index as HTML
+  [1m[36mCity Load (0.6ms)[0m  [1m[34mSELECT `cities`.* FROM `cities`[0m
+  ↳ app/controllers/cities_controller.rb:7:in `index'
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 4.4ms | Allocations: 3947)
+
+
+  
+TypeError (no implicit conversion of String into Integer):
+  
+app/controllers/cities_controller.rb:9:in `[]='
+app/controllers/cities_controller.rb:9:in `block in index'
+app/controllers/cities_controller.rb:8:in `each'
+app/controllers/cities_controller.rb:8:in `index'
+Started GET "/cities" for 127.0.0.1 at 2024-02-28 20:22:29 +0100
+Processing by CitiesController#index as HTML
+  [1m[36mCity Load (0.4ms)[0m  [1m[34mSELECT `cities`.* FROM `cities`[0m
+  ↳ app/controllers/cities_controller.rb:7:in `index'
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 4.2ms | Allocations: 3942)
+
+
+  
+NoMethodError (undefined method `length' for nil):
+  
+app/controllers/cities_controller.rb:8:in `index'
+Started GET "/cities" for 127.0.0.1 at 2024-02-28 20:23:01 +0100
+Processing by CitiesController#index as HTML
+  [1m[36mCity Load (0.4ms)[0m  [1m[34mSELECT `cities`.* FROM `cities`[0m
+  ↳ app/controllers/cities_controller.rb:7:in `index'
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 3.4ms | Allocations: 3950)
+
+
+  
+NoMethodError (undefined method `length' for nil):
+  
+app/controllers/cities_controller.rb:9:in `index'
+Started GET "/cities" for 127.0.0.1 at 2024-02-28 20:23:15 +0100
+Processing by CitiesController#index as HTML
+  [1m[36mCity Load (0.5ms)[0m  [1m[34mSELECT `cities`.* FROM `cities`[0m
+  ↳ app/controllers/cities_controller.rb:7:in `index'
+Completed 200 OK in 14ms (Views: 0.2ms | ActiveRecord: 3.5ms | Allocations: 3950)
+
+
+Started GET "/cities" for 127.0.0.1 at 2024-02-28 20:24:33 +0100
+Processing by CitiesController#index as HTML
+  [1m[36mCity Load (0.4ms)[0m  [1m[34mSELECT `cities`.* FROM `cities`[0m
+  ↳ app/controllers/cities_controller.rb:7:in `index'
+Completed 200 OK in 13ms (Views: 0.2ms | ActiveRecord: 3.9ms | Allocations: 3937)
+
+
+Started GET "/cities" for 127.0.0.1 at 2024-02-28 20:25:04 +0100
+Processing by CitiesController#index as HTML
+  [1m[36mCity Load (0.4ms)[0m  [1m[34mSELECT `cities`.* FROM `cities`[0m
+  ↳ app/controllers/cities_controller.rb:7:in `index'
+Completed 200 OK in 13ms (Views: 0.6ms | ActiveRecord: 3.4ms | Allocations: 3920)
+
+
+Started GET "/cities" for 127.0.0.1 at 2024-02-28 20:30:22 +0100
+Processing by CitiesController#index as HTML
+  [1m[36mCity Load (0.6ms)[0m  [1m[34mSELECT `cities`.* FROM `cities`[0m
+  ↳ app/controllers/cities_controller.rb:7:in `index'
+Completed 200 OK in 10ms (Views: 0.1ms | ActiveRecord: 3.4ms | Allocations: 3920)
+
+
+Started GET "/cities/1" for 127.0.0.1 at 2024-02-28 20:33:57 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCity Load (0.5ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/cities_controller.rb:49:in `set_city'
+Completed 200 OK in 18ms (Views: 0.7ms | ActiveRecord: 4.9ms | Allocations: 4521)
+
+
+Started GET "/cities/1" for 127.0.0.1 at 2024-02-28 20:34:22 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/cities_controller.rb:49:in `set_city'
+Completed 200 OK in 14ms (Views: 0.4ms | ActiveRecord: 3.5ms | Allocations: 3963)
+
+
+Started GET "/cities/1" for 127.0.0.1 at 2024-02-28 20:35:31 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCity Load (0.6ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/cities_controller.rb:50:in `set_city'
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 4.5ms | Allocations: 3986)
+
+
+  
+NameError (undefined local variable or method `city' for an instance of CitiesController):
+  
+app/controllers/cities_controller.rb:19:in `show'
+Started GET "/cities/1" for 127.0.0.1 at 2024-02-28 20:35:44 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/cities_controller.rb:50:in `set_city'
+Completed 200 OK in 12ms (Views: 0.8ms | ActiveRecord: 3.7ms | Allocations: 4005)
+
+
+Started GET "/cities/1" for 127.0.0.1 at 2024-02-28 20:37:06 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCity Load (0.4ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/cities_controller.rb:51:in `set_city'
+Completed 200 OK in 14ms (Views: 0.2ms | ActiveRecord: 3.3ms | Allocations: 3938)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2024-02-28 20:40:17 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (5.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:48:in `set_user'
+Completed 404 Not Found in 52ms (ActiveRecord: 10.8ms | Allocations: 3433)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=1):
+  
+app/controllers/users_controller.rb:48:in `set_user'
+Started GET "/users" for 127.0.0.1 at 2024-02-28 20:40:24 +0100
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users`[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 574)
+
+

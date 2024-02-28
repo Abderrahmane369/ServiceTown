@@ -4,12 +4,19 @@ class ServicesController < ApplicationController
   # GET /services
   def index
     @services = Service.all
-
-    render json: @services
+    services_hash = @services.as_json
+    services_hash.each do |service|
+      service['id'] = service['uuid']
+      service.delete('uuid')
+    end
+    render json: services_hash
   end
 
   # GET /services/1
   def show
+    service = @service.as_json
+    service['id'] = service['uuid']
+    service.delete('uuid')
     render json: @service
   end
 

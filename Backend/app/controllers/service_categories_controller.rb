@@ -4,12 +4,19 @@ class ServiceCategoriesController < ApplicationController
   # GET /service_categories
   def index
     @service_categories = ServiceCategory.all
-
-    render json: @service_categories
+    categories_hash = @service_categories.as_json
+    categories_hash.each do |category|
+      category['id'] = category['uuid']
+      category.delete('uuid')
+    end
+    render json: categories_hash
   end
 
   # GET /service_categories/1
   def show
+    service_category = @service_category.as_json
+    service_category['id'] = service_category['uuid']
+    service_category.delete('uuid')
     render json: @service_category
   end
 

@@ -4,12 +4,19 @@ class UsersController < ApplicationController
   # GET /users
   def index
     @users = User.all
-
-    render json: @users
+    users_hash = @users.as_json
+    users_hash.each do |user|
+      user['id'] = user['uuid']
+      user.delete('uuid')
+    end
+    render json: users_hash
   end
 
   # GET /users/1
   def show
+    user = @user.as_json
+    user['id'] = user['uuid']
+    user.delete('uuid')
     render json: @user
   end
 

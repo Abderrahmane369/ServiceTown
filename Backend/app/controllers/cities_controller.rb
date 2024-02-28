@@ -4,13 +4,20 @@ class CitiesController < ApplicationController
   # GET /cities
   def index
     @cities = City.all
-
-    render json: @cities
+    cities_hash = @cities.as_json
+    cities_hash.each do |city|
+      city['id'] = city['uuid']
+      city.delete('uuid')
+    end
+    render json: cities_hash
   end
 
   # GET /cities/1
   def show
-    render json: @city
+    city = @city.as_json
+    city['id'] = city['uuid']
+    city.delete('uuid')
+    render json: city
   end
 
   # POST /cities
