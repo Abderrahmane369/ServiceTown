@@ -5,7 +5,10 @@ Rails.application.routes.draw do
       resources :reviews, param: :uuid
       resources :services, param: :uuid
       resources :users, param: :uuid
-      resources :cities, param: :uuid
+      resources :cities, param: :uuid do
+        get 'services', on: :member, action: :show_services, controller: 'cities'
+        get 'services/:service_uuid', on: :member, action: :show_service, controller: 'cities'
+      end
       resources :service_categories, param: :uuid
     end
   end

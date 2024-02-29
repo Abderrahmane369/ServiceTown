@@ -1,12 +1,30 @@
 class Api::V1::CitiesController < ApplicationController
   before_action :set_city, only: %i[ show update destroy ]
 
+  # GET /cities/<uuid>/services
+  def show_services
+    @city = City.find_by(uuid: params[:uuid])
+    services_hash = @city.services.as_json
+    services_hash.each do |service|
+      service['id'] = service['uuid']
+      service.delete('uuid')
+    end
+    render json: services_hash
+  end
+
+  # GET /cities/<uuid>/services/<service_uuid>
+  def show_service
+    @city = City.find_by(uuid: params[:uuid])
+    service = @city.services.find_by(uuid: params[:service_uuid])
+    render json: service
+  end
+
+
   # GET /cities
   def index
     @cities = City.all
     cities_hash = @cities.as_json
     cities_hash.each do |city|
-      p city
       city['id'] = city['uuid']
       city.delete('uuid')
     end
