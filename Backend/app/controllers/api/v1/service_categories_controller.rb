@@ -25,7 +25,7 @@ class Api::V1::ServiceCategoriesController < ApplicationController
     @service_category = ServiceCategory.new(service_category_params)
 
     if @service_category.save
-      render json: @service_category, status: :created, location: @service_category
+      render json: @service_category, status: :created, location: api_v1_service_category_url(@service_category)
     else
       render json: @service_category.errors, status: :unprocessable_entity
     end

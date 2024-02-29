@@ -1653,3 +1653,164 @@ Processing by Api::V1::UsersController#index as HTML
 Completed 200 OK in 31ms (Views: 0.1ms | ActiveRecord: 1.6ms | Allocations: 8355)
 
 
+Started GET "/api/v1/users" for 127.0.0.1 at 2024-02-29 11:43:41 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT `users`.* FROM `users`[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7:in `index'
+Completed 200 OK in 116ms (Views: 0.2ms | ActiveRecord: 8.5ms | Allocations: 24838)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2024-02-29 11:44:14 +0100
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users`[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 678)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2024-02-29 11:44:52 +0100
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users`[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 681)
+
+
+Started POST "/api/v1/users" for 127.0.0.1 at 2024-02-29 11:46:29 +0100
+Processing by Api::V1::UsersController#create as */*
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 155)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/api/v1/users_controller.rb:56:in `user_params'
+app/controllers/api/v1/users_controller.rb:25:in `create'
+Started POST "/api/v1/users" for 127.0.0.1 at 2024-02-29 11:47:11 +0100
+Processing by Api::V1::UsersController#create as */*
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 100)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/api/v1/users_controller.rb:56:in `user_params'
+app/controllers/api/v1/users_controller.rb:25:in `create'
+Started POST "/api/v1/users" for 127.0.0.1 at 2024-02-29 11:50:48 +0100
+Processing by Api::V1::UsersController#create as */*
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 98)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/api/v1/users_controller.rb:56:in `user_params'
+app/controllers/api/v1/users_controller.rb:25:in `create'
+Started POST "/api/v1/users" for 127.0.0.1 at 2024-02-29 11:55:41 +0100
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"Mohamed", "email"=>"Mohamed@gmail.com", "password"=>"[FILTERED]", "Phone"=>"465555522", "city_id"=>"1", "role"=>"customer"}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 98)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/api/v1/users_controller.rb:56:in `user_params'
+app/controllers/api/v1/users_controller.rb:25:in `create'
+Started POST "/api/v1/users" for 127.0.0.1 at 2024-02-29 11:55:50 +0100
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"query"=>"\n    query IntrospectionQuery {\n      __schema {\n        \n        queryType { name }\n        mutationType { name }\n        subscriptionType { name }\n        types {\n          ...FullType\n        }\n        directives {\n          name\n          description\n          \n          locations\n          args {\n            ...InputValue\n          }\n        }\n      }\n    }\n\n    fragment FullType on __Type {\n      kind\n      name\n      description\n      \n      fields(includeDeprecated: true) {\n        name\n        description\n        args {\n          ...InputValue\n        }\n        type {\n          ...TypeRef\n        }\n        isDeprecated\n        deprecationReason\n      }\n      inputFields {\n        ...InputValue\n      }\n      interfaces {\n        ...TypeRef\n      }\n      enumValues(includeDeprecated: true) {\n        name\n        description\n        isDeprecated\n        deprecationReason\n      }\n      possibleTypes {\n        ...TypeRef\n      }\n    }\n\n    fragment InputValue on __InputValue {\n      name\n      description\n      type { ...TypeRef }\n      defaultValue\n      \n      \n    }\n\n    fragment TypeRef on __Type {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                  ofType {\n                    kind\n                    name\n                  }\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  ", "user"=>{}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 113)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/api/v1/users_controller.rb:56:in `user_params'
+app/controllers/api/v1/users_controller.rb:25:in `create'
+Started POST "/api/v1/users" for 127.0.0.1 at 2024-02-29 11:57:49 +0100
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"John Doe", "email"=>"john.doe@example.com", "password"=>"[FILTERED]", "phone"=>"+1234567890", "city_id"=>1, "role"=>"user"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `create'
+  [1m[36mCity Load (0.6ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `create'
+  [1m[36mUser Create (1.5ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `password`, `phone`, `city_id`, `role`, `created_at`, `updated_at`, `uuid`) VALUES ('John Doe', 'john.doe@example.com', 'P@ssw0rd123', '+1234567890', 1, 'user', '2024-02-29 10:57:49.539967', '2024-02-29 10:57:49.539967', '30a02258-508c-4dd6-8983-9a611bd70016')[0m
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `create'
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `create'
+Completed 500 Internal Server Error in 87ms (ActiveRecord: 13.0ms | Allocations: 11412)
+
+
+  
+NoMethodError (undefined method `user_url' for an instance of Api::V1::UsersController):
+  
+app/controllers/api/v1/users_controller.rb:28:in `create'
+Started POST "/api/v1/users" for 127.0.0.1 at 2024-02-29 11:59:43 +0100
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"John Doe", "email"=>"john.doe@example.com", "password"=>"[FILTERED]", "phone"=>"+1234567890", "city_id"=>1, "role"=>"user", "user"=>{"name"=>"John Doe", "email"=>"john.doe@example.com", "password"=>"[FILTERED]", "phone"=>"+1234567890", "city_id"=>1, "role"=>"user"}}
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `create'
+  [1m[36mCity Load (4.8ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `create'
+  [1m[36mUser Create (1.5ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `password`, `phone`, `city_id`, `role`, `created_at`, `updated_at`, `uuid`) VALUES ('John Doe', 'john.doe@example.com', 'P@ssw0rd123', '+1234567890', 1, 'user', '2024-02-29 10:59:43.247942', '2024-02-29 10:59:43.247942', '976a704e-cc47-4351-ba1a-9e7cf31a51a2')[0m
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `create'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `create'
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 8.3ms | Allocations: 2521)
+
+
+  
+NoMethodError (undefined method `user_url' for an instance of Api::V1::UsersController):
+  
+app/controllers/api/v1/users_controller.rb:28:in `create'
+Started POST "/api/v1/users" for 127.0.0.1 at 2024-02-29 12:00:39 +0100
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"John Doe", "email"=>"john.doe@example.com", "password"=>"[FILTERED]", "phone"=>"+1234567890", "city_id"=>1, "role"=>"user", "user"=>{"name"=>"John Doe", "email"=>"john.doe@example.com", "password"=>"[FILTERED]", "phone"=>"+1234567890", "city_id"=>1, "role"=>"user"}}
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `create'
+  [1m[36mCity Load (0.6ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `create'
+  [1m[36mUser Create (1.5ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `password`, `phone`, `city_id`, `role`, `created_at`, `updated_at`, `uuid`) VALUES ('John Doe', 'john.doe@example.com', 'P@ssw0rd123', '+1234567890', 1, 'user', '2024-02-29 11:00:39.252607', '2024-02-29 11:00:39.252607', '3f3c833a-2cd7-4a9b-9d8b-739e1c3e706c')[0m
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `create'
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `create'
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 4.9ms | Allocations: 2508)
+
+
+  
+NoMethodError (undefined method `user_url' for an instance of Api::V1::UsersController):
+  
+app/controllers/api/v1/users_controller.rb:28:in `create'
+Started GET "/cities" for 127.0.0.1 at 2024-02-29 12:08:56 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/cities"):
+  
+Started GET "/api/v1/cities" for 127.0.0.1 at 2024-02-29 12:09:05 +0100
+Processing by Api::V1::CitiesController#index as HTML
+  [1m[36mCity Load (2.6ms)[0m  [1m[34mSELECT `cities`.* FROM `cities`[0m
+  ↳ app/controllers/api/v1/cities_controller.rb:7:in `index'
+Completed 200 OK in 99ms (Views: 0.2ms | ActiveRecord: 15.6ms | Allocations: 15976)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2024-02-29 12:09:11 +0100
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users`[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7:in `index'
+Completed 200 OK in 34ms (Views: 0.1ms | ActiveRecord: 2.4ms | Allocations: 10416)
+
+
+Started POST "/api/v1/users" for 127.0.0.1 at 2024-02-29 12:09:28 +0100
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"John Doe2", "email"=>"john.doe@example.com", "password"=>"[FILTERED]", "phone"=>"+1234567890", "city_id"=>1, "role"=>"user", "user"=>{"name"=>"John Doe2", "email"=>"john.doe@example.com", "password"=>"[FILTERED]", "phone"=>"+1234567890", "city_id"=>1, "role"=>"user"}}
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `create'
+  [1m[36mCity Load (0.4ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `create'
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `password`, `phone`, `city_id`, `role`, `created_at`, `updated_at`, `uuid`) VALUES ('John Doe2', 'john.doe@example.com', 'P@ssw0rd123', '+1234567890', 1, 'user', '2024-02-29 11:09:28.842655', '2024-02-29 11:09:28.842655', '419378e9-c66b-45b6-aae7-a5a39a51b529')[0m
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `create'
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `create'
+Completed 201 Created in 69ms (Views: 0.4ms | ActiveRecord: 7.7ms | Allocations: 8548)
+
+

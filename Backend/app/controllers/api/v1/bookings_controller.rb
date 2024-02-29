@@ -25,7 +25,7 @@ class Api::V1::BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
 
     if @booking.save
-      render json: @booking, status: :created, location: @booking
+      render json: @booking, status: :created, location: api_v1_booking_url(@booking)
     else
       render json: @booking.errors, status: :unprocessable_entity
     end
