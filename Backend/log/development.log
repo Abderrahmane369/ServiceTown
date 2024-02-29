@@ -771,3 +771,777 @@ Processing by UsersController#index as HTML
 Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 574)
 
 
+Started GET "/" for 127.0.0.1 at 2024-02-29 00:05:04 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (4.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/hachim/.asdf/installs/ruby/3.3.0/lib/ruby/gems/3.3.0/gems/railties-7.1.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/hachim/.asdf/installs/ruby/3.3.0/lib/ruby/gems/3.3.0/gems/railties-7.1.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 2.4ms | Allocations: 375)
+Completed 200 OK in 55ms (Views: 32.1ms | ActiveRecord: 0.0ms | Allocations: 4227)
+
+
+Started GET "/cities" for 127.0.0.1 at 2024-02-29 00:05:14 +0100
+Processing by CitiesController#index as HTML
+  [1m[36mCity Load (4.8ms)[0m  [1m[34mSELECT `cities`.* FROM `cities`[0m
+  ↳ app/controllers/cities_controller.rb:7:in `index'
+Completed 200 OK in 147ms (Views: 0.4ms | ActiveRecord: 27.1ms | Allocations: 15420)
+
+
+Started GET "/cities/4" for 127.0.0.1 at 2024-02-29 00:05:30 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mCity Load (0.7ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/cities_controller.rb:51:in `set_city'
+Completed 200 OK in 39ms (Views: 0.1ms | ActiveRecord: 0.6ms | Allocations: 2752)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2024-02-29 00:05:30 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/cities/5" for 127.0.0.1 at 2024-02-29 00:05:38 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mCity Load (0.9ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1[0m
+  ↳ app/controllers/cities_controller.rb:51:in `set_city'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.9ms | Allocations: 524)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City with 'id'=5):
+  
+app/controllers/cities_controller.rb:51:in `set_city'
+Started GET "/cities/4" for 127.0.0.1 at 2024-02-29 00:05:43 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mCity Load (1.4ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/cities_controller.rb:51:in `set_city'
+Completed 200 OK in 14ms (Views: 0.2ms | ActiveRecord: 1.0ms | Allocations: 524)
+
+
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT GET_LOCK('4373051316486144390', 0)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.5ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT RELEASE_LOCK('4373051316486144390')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started GET "/cities/4" for 127.0.0.1 at 2024-02-29 00:19:13 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (2.9ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"4"}
+Completed 404 Not Found in 69ms (ActiveRecord: 13.9ms | Allocations: 6488)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:51:in `set_city'
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 00:19:20 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 112)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:51:in `set_city'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT GET_LOCK('4373051316486144390', 0)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (2.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT RELEASE_LOCK('4373051316486144390')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 00:24:26 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+Completed 404 Not Found in 73ms (ActiveRecord: 23.8ms | Allocations: 6488)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:51:in `set_city'
+Started GET "/cities/4" for 127.0.0.1 at 2024-02-29 00:24:32 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"4"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 112)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:51:in `set_city'
+Started GET "/cities/4" for 127.0.0.1 at 2024-02-29 00:24:39 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"4"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 111)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:51:in `set_city'
+Started GET "/cities/4" for 127.0.0.1 at 2024-02-29 00:24:41 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"4"}
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms | Allocations: 111)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:51:in `set_city'
+Started GET "/cities" for 127.0.0.1 at 2024-02-29 00:25:10 +0100
+Processing by CitiesController#index as HTML
+  [1m[36mCity Load (1.2ms)[0m  [1m[34mSELECT `cities`.* FROM `cities`[0m
+  ↳ app/controllers/cities_controller.rb:7:in `index'
+Completed 200 OK in 88ms (Views: 0.6ms | ActiveRecord: 17.2ms | Allocations: 10877)
+
+
+Started GET "/cities/4" for 127.0.0.1 at 2024-02-29 00:25:18 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"4"}
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms | Allocations: 107)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:51:in `set_city'
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 00:25:40 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms | Allocations: 107)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:51:in `set_city'
+Started GET "/cities/1" for 127.0.0.1 at 2024-02-29 00:25:53 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"1"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 111)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:51:in `set_city'
+Started GET "/cities/2" for 127.0.0.1 at 2024-02-29 00:25:58 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"2"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 107)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:51:in `set_city'
+Started GET "/cities/4" for 127.0.0.1 at 2024-02-29 00:26:02 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"4"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 107)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:51:in `set_city'
+Started GET "/cities/4" for 127.0.0.1 at 2024-02-29 00:26:05 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"4"}
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms | Allocations: 107)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:51:in `set_city'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT GET_LOCK('4373051316486144390', 0)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT RELEASE_LOCK('4373051316486144390')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT GET_LOCK('4373051316486144390', 0)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT RELEASE_LOCK('4373051316486144390')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started GET "/cities/4" for 127.0.0.1 at 2024-02-29 00:27:46 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"4"}
+Completed 404 Not Found in 169ms (ActiveRecord: 46.2ms | Allocations: 6486)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:51:in `set_city'
+Started GET "/cities/4" for 127.0.0.1 at 2024-02-29 00:27:47 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"4"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 112)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:51:in `set_city'
+Started GET "/favicon.ico" for 127.0.0.1 at 2024-02-29 00:27:48 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/cities/4" for 127.0.0.1 at 2024-02-29 00:27:49 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"4"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 111)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:51:in `set_city'
+Started GET "/cities" for 127.0.0.1 at 2024-02-29 00:28:04 +0100
+Processing by CitiesController#index as HTML
+  [1m[36mCity Load (2.1ms)[0m  [1m[34mSELECT `cities`.* FROM `cities`[0m
+  ↳ app/controllers/cities_controller.rb:7:in `index'
+Completed 200 OK in 91ms (Views: 0.3ms | ActiveRecord: 12.2ms | Allocations: 9386)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-02-29 00:28:49 +0100
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT `users`.* FROM `users`[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+Completed 200 OK in 31ms (Views: 0.4ms | ActiveRecord: 1.4ms | Allocations: 2306)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2024-02-29 00:28:49 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/cities/4" for 127.0.0.1 at 2024-02-29 00:29:03 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"4"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 109)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:51:in `set_city'
+Started GET "/favicon.ico" for 127.0.0.1 at 2024-02-29 00:29:04 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT GET_LOCK('4373051316486144390', 0)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT RELEASE_LOCK('4373051316486144390')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started GET "/cities/4" for 127.0.0.1 at 2024-02-29 00:30:27 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (1.9ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by CitiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mCity Load (2.5ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/cities_controller.rb:51:in `set_city'
+Completed 200 OK in 122ms (Views: 0.3ms | ActiveRecord: 22.3ms | Allocations: 18153)
+
+
+Started GET "/users/4" for 127.0.0.1 at 2024-02-29 00:30:52 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (10.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:51:in `set_user'
+Completed 404 Not Found in 33ms (ActiveRecord: 17.0ms | Allocations: 2455)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=4):
+  
+app/controllers/users_controller.rb:51:in `set_user'
+Started GET "/users/4" for 127.0.0.1 at 2024-02-29 00:30:56 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:51:in `set_user'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.8ms | Allocations: 495)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=4):
+  
+app/controllers/users_controller.rb:51:in `set_user'
+Started GET "/cities/4" for 127.0.0.1 at 2024-02-29 00:31:11 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mCity Load (3.3ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/cities_controller.rb:51:in `set_city'
+Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 3.3ms | Allocations: 527)
+
+
+Started GET "/cities/4" for 127.0.0.1 at 2024-02-29 00:36:01 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"4"}
+Completed 404 Not Found in 46ms (ActiveRecord: 7.5ms | Allocations: 6486)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:59:in `set_city'
+Started GET "/favicon.ico" for 127.0.0.1 at 2024-02-29 00:36:02 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/cities/4" for 127.0.0.1 at 2024-02-29 00:36:08 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"4"}
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms | Allocations: 112)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:59:in `set_city'
+Started GET "/cities/4" for 127.0.0.1 at 2024-02-29 00:36:17 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"4"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 111)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:59:in `set_city'
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 00:36:22 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms | Allocations: 111)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:59:in `set_city'
+Started GET "/favicon.ico" for 127.0.0.1 at 2024-02-29 00:36:23 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 00:36:26 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 111)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:59:in `set_city'
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 00:36:27 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 107)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:59:in `set_city'
+Started GET "/cities/4" for 127.0.0.1 at 2024-02-29 00:36:36 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"4"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 107)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:59:in `set_city'
+Started GET "/cities/4" for 127.0.0.1 at 2024-02-29 00:39:18 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"4"}
+Completed 404 Not Found in 49ms (ActiveRecord: 11.9ms | Allocations: 6486)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:59:in `set_city'
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 00:39:23 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 112)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:59:in `set_city'
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 00:39:26 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 111)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:59:in `set_city'
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 00:39:27 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+Completed 404 Not Found in 2ms (ActiveRecord: 0.0ms | Allocations: 111)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:59:in `set_city'
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 00:39:28 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 111)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:59:in `set_city'
+Started GET "/cities/4" for 127.0.0.1 at 2024-02-29 00:40:47 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by CitiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mCity Load (1.3ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/cities_controller.rb:51:in `set_city'
+Completed 200 OK in 140ms (Views: 0.5ms | ActiveRecord: 15.0ms | Allocations: 18152)
+
+
+Started GET "/cities/4" for 127.0.0.1 at 2024-02-29 10:11:27 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (6.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"4"}
+Completed 404 Not Found in 145ms (ActiveRecord: 50.2ms | Allocations: 6489)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:52:in `set_city'
+Started GET "/cities/4" for 127.0.0.1 at 2024-02-29 10:11:29 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"4"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 112)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:52:in `set_city'
+Started GET "/cities/4" for 127.0.0.1 at 2024-02-29 10:11:42 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"4"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 111)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:52:in `set_city'
+Started GET "/cities/4" for 127.0.0.1 at 2024-02-29 10:11:45 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"4"}
+Completed 404 Not Found in 9ms (ActiveRecord: 0.0ms | Allocations: 111)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:52:in `set_city'
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 10:11:49 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 107)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:52:in `set_city'
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 10:11:51 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 107)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:52:in `set_city'
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 10:11:52 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 111)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:52:in `set_city'
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 10:11:53 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 107)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:52:in `set_city'
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 10:15:31 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 107)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:52:in `set_city'
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 10:21:11 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (1.8ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+Completed 404 Not Found in 64ms (ActiveRecord: 32.6ms | Allocations: 6486)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:53:in `set_city'
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 10:21:36 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 112)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:53:in `set_city'
+Started GET "/cities/4" for 127.0.0.1 at 2024-02-29 10:21:42 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"4"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 111)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:53:in `set_city'
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 10:21:47 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms | Allocations: 111)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:53:in `set_city'
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 10:22:37 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (3.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+Completed 404 Not Found in 69ms (ActiveRecord: 34.4ms | Allocations: 6486)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:53:in `set_city'
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 10:22:39 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 112)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:53:in `set_city'
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 10:22:40 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 111)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:53:in `set_city'
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 10:22:41 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 111)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:53:in `set_city'
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 10:22:42 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 111)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:53:in `set_city'
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 10:22:44 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 107)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:53:in `set_city'
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 10:22:45 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 107)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City without an ID):
+  
+app/controllers/cities_controller.rb:53:in `set_city'
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 10:36:21 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (3.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+  [1m[36mCity Load (4.4ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`id` = NULL LIMIT 1[0m
+  ↳ app/controllers/cities_controller.rb:53:in `set_city'
+Completed 404 Not Found in 163ms (ActiveRecord: 104.1ms | Allocations: 8228)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City with 'id'={:uuid=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}):
+  
+app/controllers/cities_controller.rb:53:in `set_city'
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 10:36:23 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+  [1m[36mCity Load (1.5ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`id` = NULL LIMIT 1[0m
+  ↳ app/controllers/cities_controller.rb:53:in `set_city'
+Completed 404 Not Found in 8ms (ActiveRecord: 1.4ms | Allocations: 657)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City with 'id'={:uuid=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}):
+  
+app/controllers/cities_controller.rb:53:in `set_city'
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 10:36:29 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+  [1m[36mCity Load (1.2ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`id` = NULL LIMIT 1[0m
+  ↳ app/controllers/cities_controller.rb:53:in `set_city'
+Completed 404 Not Found in 7ms (ActiveRecord: 1.2ms | Allocations: 649)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City with 'id'={:uuid=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}):
+  
+app/controllers/cities_controller.rb:53:in `set_city'
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 10:37:51 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (2.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+  [1m[36mCity Load (4.8ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`id` = NULL LIMIT 1[0m
+  ↳ app/controllers/cities_controller.rb:53:in `set_city'
+Completed 404 Not Found in 105ms (ActiveRecord: 46.2ms | Allocations: 8198)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City with 'id'=e77d0ceb-3a14-421f-8222-25eb8554c2a6):
+  
+app/controllers/cities_controller.rb:53:in `set_city'
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 10:37:54 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+  [1m[36mCity Load (0.6ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`id` = NULL LIMIT 1[0m
+  ↳ app/controllers/cities_controller.rb:53:in `set_city'
+Completed 404 Not Found in 7ms (ActiveRecord: 0.6ms | Allocations: 495)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find City with 'id'=e77d0ceb-3a14-421f-8222-25eb8554c2a6):
+  
+app/controllers/cities_controller.rb:53:in `set_city'
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 10:39:38 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (2.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+  [1m[36mCity Load (2.5ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`uuid` = 'e77d0ceb-3a14-421f-8222-25eb8554c2a6' LIMIT 1[0m
+  ↳ app/controllers/cities_controller.rb:53:in `set_city'
+Completed 200 OK in 143ms (Views: 1.1ms | ActiveRecord: 26.6ms | Allocations: 18134)
+
+
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 10:39:41 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+  [1m[36mCity Load (0.9ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`uuid` = 'e77d0ceb-3a14-421f-8222-25eb8554c2a6' LIMIT 1[0m
+  ↳ app/controllers/cities_controller.rb:53:in `set_city'
+Completed 200 OK in 12ms (Views: 0.3ms | ActiveRecord: 0.9ms | Allocations: 537)
+
+
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 10:39:43 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+  [1m[36mCity Load (0.5ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`uuid` = 'e77d0ceb-3a14-421f-8222-25eb8554c2a6' LIMIT 1[0m
+  ↳ app/controllers/cities_controller.rb:53:in `set_city'
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 528)
+
+
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 10:39:44 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+  [1m[36mCity Load (0.9ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`uuid` = 'e77d0ceb-3a14-421f-8222-25eb8554c2a6' LIMIT 1[0m
+  ↳ app/controllers/cities_controller.rb:53:in `set_city'
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 0.9ms | Allocations: 528)
+
+
+Started GET "/cities/4" for 127.0.0.1 at 2024-02-29 10:39:59 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"4"}
+  [1m[36mCity Load (0.8ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`uuid` = '4' LIMIT 1[0m
+  ↳ app/controllers/cities_controller.rb:53:in `set_city'
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.7ms | Allocations: 541)
+
+
+  
+NoMethodError (undefined method `[]' for nil):
+  
+app/controllers/cities_controller.rb:19:in `show'
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 10:40:11 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+  [1m[36mCity Load (2.7ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`uuid` = 'e77d0ceb-3a14-421f-8222-25eb8554c2a6' LIMIT 1[0m
+  ↳ app/controllers/cities_controller.rb:53:in `set_city'
+Completed 200 OK in 11ms (Views: 0.1ms | ActiveRecord: 2.7ms | Allocations: 517)
+
+
+Started GET "/cities/e77d0ceb-3a14-421f-8222-25eb8554c2a6" for 127.0.0.1 at 2024-02-29 10:40:12 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"e77d0ceb-3a14-421f-8222-25eb8554c2a6"}
+  [1m[36mCity Load (0.7ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`uuid` = 'e77d0ceb-3a14-421f-8222-25eb8554c2a6' LIMIT 1[0m
+  ↳ app/controllers/cities_controller.rb:53:in `set_city'
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 516)
+
+
