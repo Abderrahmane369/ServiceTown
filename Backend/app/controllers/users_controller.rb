@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     render json: users_hash
   end
 
-  # GET /users/1
+  # GET /users/<uuid>
   def show
     user = @user.as_json
     user['id'] = user['uuid']
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /users/1
+  # PATCH/PUT /users/<uuid>
   def update
     if @user.update(user_params)
       render json: @user
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1
+  # DELETE /users/<uuid>
   def destroy
     @user.destroy!
   end
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      @user = User.find_by(uuid: params[:uuid])
     end
 
     # Only allow a list of trusted parameters through.

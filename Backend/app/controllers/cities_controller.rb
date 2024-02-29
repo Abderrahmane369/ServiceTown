@@ -12,7 +12,7 @@ class CitiesController < ApplicationController
     render json: cities_hash
   end
 
-  # GET /cities/1
+  # GET /cities/<uuid>
   def show
     city = @city.as_json
     city['id'] = city['uuid']
@@ -31,7 +31,7 @@ class CitiesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /cities/1
+  # PATCH/PUT /cities/<uuid>
   def update
     if @city.update(city_params)
       render json: @city
@@ -40,7 +40,7 @@ class CitiesController < ApplicationController
     end
   end
 
-  # DELETE /cities/1
+  # DELETE /cities/<uuid>
   def destroy
     @city.destroy!
   end
@@ -49,8 +49,8 @@ class CitiesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_city
-     # @city = City.find(params[:id])
-       @city = City.find_by(uuid: params[:uuid])
+      #@city = City.find(params[:id])
+      @city = City.find_by(uuid: params[:uuid])
     end
 
 

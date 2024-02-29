@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
     render json: reviews_hash
   end
 
-  # GET /reviews/1
+  # GET /reviews/<uuid>
   def show
     review = @review.as_json
     review['id'] = review['uuid']
@@ -31,7 +31,7 @@ class ReviewsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /reviews/1
+  # PATCH/PUT /reviews/<uuid>
   def update
     if @review.update(review_params)
       render json: @review
@@ -40,7 +40,7 @@ class ReviewsController < ApplicationController
     end
   end
 
-  # DELETE /reviews/1
+  # DELETE /reviews/<uuid>
   def destroy
     @review.destroy!
   end
@@ -48,7 +48,7 @@ class ReviewsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_review
-      @review = Review.find(params[:id])
+      @review = Review.find_by(uuid: params[:uuid])
     end
 
     # Only allow a list of trusted parameters through.

@@ -12,7 +12,7 @@ class ServiceCategoriesController < ApplicationController
     render json: categories_hash
   end
 
-  # GET /service_categories/1
+  # GET /service_categories/<uuid>
   def show
     service_category = @service_category.as_json
     service_category['id'] = service_category['uuid']
@@ -31,7 +31,7 @@ class ServiceCategoriesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /service_categories/1
+  # PATCH/PUT /service_categories/<uuid>
   def update
     if @service_category.update(service_category_params)
       render json: @service_category
@@ -40,7 +40,7 @@ class ServiceCategoriesController < ApplicationController
     end
   end
 
-  # DELETE /service_categories/1
+  # DELETE /service_categories/<uuid>
   def destroy
     @service_category.destroy!
   end
@@ -48,7 +48,7 @@ class ServiceCategoriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_service_category
-      @service_category = ServiceCategory.find(params[:id])
+      @service_category = ServiceCategory.find_by(uuid: params[:uuid])
     end
 
     # Only allow a list of trusted parameters through.

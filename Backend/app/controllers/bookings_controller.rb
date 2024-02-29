@@ -12,7 +12,7 @@ class BookingsController < ApplicationController
     render json: bookings_hash
   end
 
-  # GET /bookings/1
+  # GET /bookings/<uuid>
   def show
     booking = @booking.as_json
     booking['id'] = booking['uuid']
@@ -31,7 +31,7 @@ class BookingsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /bookings/1
+  # PATCH/PUT /bookings/<uuid>
   def update
     if @booking.update(booking_params)
       render json: @booking
@@ -40,7 +40,7 @@ class BookingsController < ApplicationController
     end
   end
 
-  # DELETE /bookings/1
+  # DELETE /bookings/<uuid>
   def destroy
     @booking.destroy!
   end
@@ -48,7 +48,7 @@ class BookingsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_booking
-      @booking = Booking.find(params[:id])
+      @booking = Booking.find_by(uuid: params[:uuid])
     end
 
     # Only allow a list of trusted parameters through.

@@ -1545,3 +1545,69 @@ Processing by CitiesController#show as HTML
 Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 516)
 
 
+Started GET "/" for 127.0.0.1 at 2024-02-29 10:57:15 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/railties-7.1.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/railties-7.1.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.0ms | Allocations: 376)
+Completed 200 OK in 272ms (Views: 61.5ms | ActiveRecord: 0.0ms | Allocations: 4783)
+
+
+Started GET "/cities" for 127.0.0.1 at 2024-02-29 10:57:19 +0100
+Processing by CitiesController#index as HTML
+  [1m[36mCity Load (1.0ms)[0m  [1m[34mSELECT `cities`.* FROM `cities`[0m
+  ↳ app/controllers/cities_controller.rb:7:in `index'
+Completed 200 OK in 317ms (Views: 0.2ms | ActiveRecord: 12.5ms | Allocations: 15923)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2024-02-29 10:57:20 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/cities/9043d692-5e0b-4be5-a8d1-200a9c71ae56" for 127.0.0.1 at 2024-02-29 10:57:28 +0100
+Processing by CitiesController#show as HTML
+  Parameters: {"uuid"=>"9043d692-5e0b-4be5-a8d1-200a9c71ae56"}
+  [1m[36mCity Load (1.0ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`uuid` = '9043d692-5e0b-4be5-a8d1-200a9c71ae56' LIMIT 1[0m
+  ↳ app/controllers/cities_controller.rb:53:in `set_city'
+Completed 200 OK in 67ms (Views: 0.2ms | ActiveRecord: 1.0ms | Allocations: 1246)
+
+
+Started GET "/" for 127.0.0.1 at 2024-02-29 11:10:01 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/railties-7.1.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/railties-7.1.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.6ms | Allocations: 376)
+Completed 200 OK in 284ms (Views: 61.5ms | ActiveRecord: 0.0ms | Allocations: 4779)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-02-29 11:10:07 +0100
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users`[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+Completed 200 OK in 303ms (Views: 0.3ms | ActiveRecord: 1.2ms | Allocations: 8334)
+
+
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCity Load (0.7ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Create (10.4ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `password`, `phone`, `city_id`, `role`, `created_at`, `updated_at`, `uuid`) VALUES ('Said', 'said@gmail.com', 'djdjskds', '05665555', 1, 'Provider', '2024-02-29 10:11:44.214864', '2024-02-29 10:11:44.214864', 'a0f60077-55b0-42df-8651-595208e967a4')[0m
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCity Load (0.4ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Create (1.6ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `password`, `phone`, `city_id`, `role`, `created_at`, `updated_at`, `uuid`) VALUES ('Ali', 'Ali@gmail.com', 'djdjskffds', '0566555555', 2, 'Provider', '2024-02-29 10:12:07.510407', '2024-02-29 10:12:07.510407', '61163834-473a-4bec-acf4-bc7341bce365')[0m
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/users" for 127.0.0.1 at 2024-02-29 11:12:26 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users`[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+Completed 200 OK in 171ms (Views: 0.3ms | ActiveRecord: 9.6ms | Allocations: 24836)
+
+
+Started GET "/users/a0f60077-55b0-42df-8651-595208e967a4" for 127.0.0.1 at 2024-02-29 11:12:53 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"uuid"=>"a0f60077-55b0-42df-8651-595208e967a4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uuid` = 'a0f60077-55b0-42df-8651-595208e967a4' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:51:in `set_user'
+Completed 200 OK in 64ms (Views: 0.4ms | ActiveRecord: 0.5ms | Allocations: 4270)
+
+

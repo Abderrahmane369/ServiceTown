@@ -12,7 +12,7 @@ class ServicesController < ApplicationController
     render json: services_hash
   end
 
-  # GET /services/1
+  # GET /services/<uuid>
   def show
     service = @service.as_json
     service['id'] = service['uuid']
@@ -31,7 +31,7 @@ class ServicesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /services/1
+  # PATCH/PUT /services/<uuid>
   def update
     if @service.update(service_params)
       render json: @service
@@ -40,7 +40,7 @@ class ServicesController < ApplicationController
     end
   end
 
-  # DELETE /services/1
+  # DELETE /services/<uuid>
   def destroy
     @service.destroy!
   end
@@ -48,7 +48,7 @@ class ServicesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_service
-      @service = Service.find(params[:id])
+      @service = Service.find_by(uuid: params[:uuid])
     end
 
     # Only allow a list of trusted parameters through.
