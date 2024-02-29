@@ -7,7 +7,6 @@ class CreateServices < ActiveRecord::Migration[7.1]
       t.boolean :availability
       t.references :service_category, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: true
-
       t.timestamps
     end
   end

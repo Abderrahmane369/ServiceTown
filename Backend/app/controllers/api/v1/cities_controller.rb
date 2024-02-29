@@ -6,6 +6,7 @@ class Api::V1::CitiesController < ApplicationController
     @cities = City.all
     cities_hash = @cities.as_json
     cities_hash.each do |city|
+      p city
       city['id'] = city['uuid']
       city.delete('uuid')
     end

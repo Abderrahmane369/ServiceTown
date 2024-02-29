@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_27_200316) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_29_193407) do
   create_table "bookings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "service_id", null: false
     t.bigint "user_id", null: false
@@ -56,7 +56,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_27_200316) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "city_id", null: false
     t.string "uuid"
+    t.index ["city_id"], name: "index_services_on_city_id"
     t.index ["service_category_id"], name: "index_services_on_service_category_id"
     t.index ["user_id"], name: "index_services_on_user_id"
   end
