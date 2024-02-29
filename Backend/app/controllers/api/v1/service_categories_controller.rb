@@ -1,4 +1,4 @@
-class ServiceCategoriesController < ApplicationController
+class Api::V1::ServiceCategoriesController < ApplicationController
   before_action :set_service_category, only: %i[ show update destroy ]
 
   # GET /service_categories

@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
-  resources :bookings, param: :uuid
-  resources :reviews, param: :uuid
-  resources :services, param: :uuid
-  resources :users, param: :uuid
-  resources :cities, param: :uuid
-  resources :service_categories, param: :uuid
+  namespace :api do
+    namespace :v1 do
+      resources :bookings, param: :uuid
+      resources :reviews, param: :uuid
+      resources :services, param: :uuid
+      resources :users, param: :uuid
+      resources :cities, param: :uuid
+      resources :service_categories, param: :uuid
+    end
+  end
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

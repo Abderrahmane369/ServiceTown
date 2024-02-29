@@ -1611,3 +1611,45 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 64ms (Views: 0.4ms | ActiveRecord: 0.5ms | Allocations: 4270)
 
 
+Started GET "/" for 127.0.0.1 at 2024-02-29 11:30:14 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/railties-7.1.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/railties-7.1.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.3ms | Allocations: 377)
+Completed 200 OK in 35ms (Views: 9.3ms | ActiveRecord: 0.0ms | Allocations: 4779)
+
+
+Started GET "/api/v1/cities" for 127.0.0.1 at 2024-02-29 11:30:21 +0100
+Processing by Api::V1::CitiesController#index as HTML
+  [1m[36mCity Load (1.0ms)[0m  [1m[34mSELECT `cities`.* FROM `cities`[0m
+  ↳ app/controllers/api/v1/cities_controller.rb:7:in `index'
+Completed 200 OK in 63ms (Views: 0.2ms | ActiveRecord: 5.4ms | Allocations: 15919)
+
+
+Started GET "/api/v1/cities/5cd55cec-1e7f-47b9-bf36-39f0e628e415" for 127.0.0.1 at 2024-02-29 11:30:39 +0100
+Processing by Api::V1::CitiesController#show as HTML
+  Parameters: {"uuid"=>"5cd55cec-1e7f-47b9-bf36-39f0e628e415"}
+  [1m[36mCity Load (0.5ms)[0m  [1m[34mSELECT `cities`.* FROM `cities` WHERE `cities`.`uuid` = '5cd55cec-1e7f-47b9-bf36-39f0e628e415' LIMIT 1[0m
+  ↳ app/controllers/api/v1/cities_controller.rb:53:in `set_city'
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 1250)
+
+
+Started GET "/api/v1/users/5cd55cec-1e7f-47b9-bf36-39f0e628e415" for 127.0.0.1 at 2024-02-29 11:30:49 +0100
+Processing by Api::V1::UsersController#show as HTML
+  Parameters: {"uuid"=>"5cd55cec-1e7f-47b9-bf36-39f0e628e415"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uuid` = '5cd55cec-1e7f-47b9-bf36-39f0e628e415' LIMIT 1[0m
+  ↳ app/controllers/api/v1/users_controller.rb:51:in `set_user'
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 2.5ms | Allocations: 2509)
+
+
+  
+NoMethodError (undefined method `[]' for nil):
+  
+app/controllers/api/v1/users_controller.rb:18:in `show'
+Started GET "/api/v1/users" for 127.0.0.1 at 2024-02-29 11:31:06 +0100
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users`[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7:in `index'
+Completed 200 OK in 31ms (Views: 0.1ms | ActiveRecord: 1.6ms | Allocations: 8355)
+
+
