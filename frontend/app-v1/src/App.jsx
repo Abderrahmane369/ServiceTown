@@ -1,29 +1,23 @@
 import { Component } from "react";
-import "./App.sass";
-import { Layout } from "antd";
-import NavBar from "./components/navbar.jsx";
-import AuthBar from "./components/authbar.jsx";
-import SearchBar from "./components/searchbar.jsx";
+import {
+    createBrowserRouter,
+    createRoutesFromElements,
+    Route,
+    RouterProvider
+} from "react-router-dom";
+import RootLayout from "./layout/RootLayout";
+import HomePage from "./pages/HomePage";
 
-const { Header, Footer, Content } = Layout;
+const router = createBrowserRouter(
+    createRoutesFromElements(
+        <Route path="/" element={<RootLayout />}>
+            <Route index element={<HomePage />} />
+        </Route>
+    )
+);
 
 export default class App extends Component {
     render() {
-        return (
-            <div className="App">
-                <Layout>
-                    <Header className="header">
-                        <div className="st-logo"> ServiceTown </div>
-                        <NavBar />
-                        <SearchBar />
-                        <AuthBar />
-                    </Header>
-                    <Content>
-                        
-                    </Content>
-                    <Footer>Copyright</Footer>
-                </Layout>
-            </div>
-        );
+        return <RouterProvider router={router} />;
     }
 }
