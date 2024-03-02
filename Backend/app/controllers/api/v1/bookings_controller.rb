@@ -14,10 +14,14 @@ class Api::V1::BookingsController < ApplicationController
 
   # GET /bookings/<uuid>
   def show
-    booking = @booking.as_json
-    booking['id'] = booking['uuid']
-    booking.delete('uuid')
-    render json: booking
+    if @booking
+      booking = @booking.as_json
+      booking['id'] = booking['uuid']
+      booking.delete('uuid')
+      render json: booking
+    else
+      render json: {error: 'Booking not found'}, status: :not_found
+    end
   end
 
   # POST /bookings
@@ -33,16 +37,24 @@ class Api::V1::BookingsController < ApplicationController
 
   # PATCH/PUT /bookings/<uuid>
   def update
-    if @booking.update(booking_params)
-      render json: @booking
+    if @booking
+      if @booking.update(booking_params)
+        render json: @booking
+      else
+        render json: @booking.errors, status: :unprocessable_entity
+      end
     else
-      render json: @booking.errors, status: :unprocessable_entity
+      render json: {error: 'Booking not found'}, status: :not_found
     end
   end
 
   # DELETE /bookings/<uuid>
   def destroy
-    @booking.destroy!
+    if @booking
+      @booking.destroy!
+    else
+      render json: {error: 'Booking not found'}, status: :not_found
+    end
   end
 
   private

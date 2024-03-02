@@ -4,12 +4,16 @@ class Api::V1::CitiesController < ApplicationController
   # GET /cities/<uuid>/services
   def show_services
     @city = City.find_by(uuid: params[:uuid])
-    services_hash = @city.services.as_json
-    services_hash.each do |service|
-      service['id'] = service['uuid']
-      service.delete('uuid')
+    if @city
+      services_hash = @city.services.as_json
+      services_hash.each do |service|
+        service['id'] = service['uuid']
+        service.delete('uuid')
+      end
+      render json: services_hash
+    else
+      render json: {error: 'City not found'}, status: :not_found
     end
-    render json: services_hash
   end
 
   # GET /cities/<uuid>/services/<service_uuid>
@@ -33,10 +37,14 @@ class Api::V1::CitiesController < ApplicationController
 
   # GET /cities/<uuid>
   def show
-    city = @city.as_json
-    city['id'] = city['uuid']
-    city.delete('uuid')
-    render json: city
+    if @city
+      city = @city.as_json
+      city['id'] = city['uuid']
+      city.delete('uuid')
+      render json: city
+    else
+      render json: {error: 'City not found'}, status: :not_found
+    end
   end
 
   # POST /cities
@@ -52,23 +60,29 @@ class Api::V1::CitiesController < ApplicationController
 
   # PATCH/PUT /cities/<uuid>
   def update
-    if @city.update(city_params)
-      render json: @city
+    if @City
+      if @city.update(city_params)
+        render json: @city
+      else
+        render json: @city.errors, status: :unprocessable_entity
+      end
     else
-      render json: @city.errors, status: :unprocessable_entity
-    end
+      render json: {error: 'City not found'}, status: :not_found
   end
 
   # DELETE /cities/<uuid>
   def destroy
-    @city.destroy!
+    if @city
+      @city.destroy!
+    else
+      render json: {error: 'City not found'}, status: :not_found
+    end
   end
 
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_city
-      #@city = City.find(params[:id])
       @city = City.find_by(uuid: params[:uuid])
     end
 

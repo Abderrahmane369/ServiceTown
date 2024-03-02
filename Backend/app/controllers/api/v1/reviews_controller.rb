@@ -14,16 +14,19 @@ class Api::V1::ReviewsController < ApplicationController
 
   # GET /reviews/<uuid>
   def show
-    review = @review.as_json
-    review['id'] = review['uuid']
-    review.delete('uuid')
-    render json: @review
+    if @review
+      review = @review.as_json
+      review['id'] = review['uuid']
+      review.delete('uuid')
+      render json: @review
+    else
+      render json: {error: 'Review not found'}, status: :not_found
+    end
   end
 
   # POST /reviews
   def create
     @review = Review.new(review_params)
-
     if @review.save
       render json: @review, status: :created, location: api_v1_review_url(@review)
     else
@@ -33,16 +36,24 @@ class Api::V1::ReviewsController < ApplicationController
 
   # PATCH/PUT /reviews/<uuid>
   def update
-    if @review.update(review_params)
-      render json: @review
+    if @review
+      if @review.update(review_params)
+        render json: @review
+      else
+        render json: @review.errors, status: :unprocessable_entity
+      end
     else
-      render json: @review.errors, status: :unprocessable_entity
+      render json: {error: 'Review not found'}, status: :not_found
     end
   end
 
   # DELETE /reviews/<uuid>
   def destroy
-    @review.destroy!
+    if @review
+      @review.destroy!
+    else
+      render json: {error: 'Review not found'}, status: :not_found
+    end
   end
 
   private

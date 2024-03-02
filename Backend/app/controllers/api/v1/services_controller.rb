@@ -14,16 +14,19 @@ class Api::V1::ServicesController < ApplicationController
 
   # GET /services/<uuid>
   def show
-    service = @service.as_json
-    service['id'] = service['uuid']
-    service.delete('uuid')
-    render json: @service
+    if @service
+      service = @service.as_json
+      service['id'] = service['uuid']
+      service.delete('uuid')
+      render json: service
+    else
+      render json: {error: 'Service not found'}, status: :not_found
+    end
   end
 
   # POST /services
   def create
     @service = Service.new(service_params)
-
     if @service.save
       render json: @service, status: :created, location: api_v1_service_url(@service)
     else
@@ -33,16 +36,24 @@ class Api::V1::ServicesController < ApplicationController
 
   # PATCH/PUT /services/<uuid>
   def update
-    if @service.update(service_params)
-      render json: @service
+    if @service
+      if @service.update(service_params)
+        render json: @service
+      else
+        render json: @service.errors, status: :unprocessable_entity
+      end
     else
-      render json: @service.errors, status: :unprocessable_entity
+      render json: {error: 'Service not found'}, status: :not_found
     end
   end
 
   # DELETE /services/<uuid>
   def destroy
-    @service.destroy!
+    if @service
+      @service.destroy!
+    else
+      render json: {error: 'Service not found'}, status: :not_found
+    end
   end
 
   private

@@ -1,19 +1,19 @@
 class Api::V1::ServiceCategoriesController < ApplicationController
   before_action :set_service_category, only: %i[ show update destroy ]
 
- 
+
   # GET /service_categories/<uuid>/services
   def services_by_category
     @service_category = ServiceCategory.find_by(uuid: params[:uuid])
-    if @service_category 
+    if @service_category
       @services = @service_category.services
       render json: @services
     else
       render json: { error: 'Service Category not found' }, status: :not_found
     end
-  end 
+  end
 
- 
+
   # GET /service_categories
   def index
     @service_categories = ServiceCategory.all
@@ -25,13 +25,17 @@ class Api::V1::ServiceCategoriesController < ApplicationController
     render json: categories_hash
   end
 
- 
+
   # GET /service_categories/<uuid>
   def show
-    service_category = @service_category.as_json
-    service_category['id'] = service_category['uuid']
-    service_category.delete('uuid')
-    render json: @service_category
+    if @service_category
+      service_category = @service_category.as_json
+      service_category['id'] = service_category['uuid']
+      service_category.delete('uuid')
+      render json: service_category
+    else
+      render json: {error: 'Service_category not found'}, status: :not_found
+    end
   end
 
   # POST /service_categories
@@ -47,16 +51,24 @@ class Api::V1::ServiceCategoriesController < ApplicationController
 
   # PATCH/PUT /service_categories/<uuid>
   def update
-    if @service_category.update(service_category_params)
-      render json: @service_category
+    if @service_category
+      if @service_category.update(service_category_params)
+        render json: @service_category
+      else
+        render json: @service_category.errors, status: :unprocessable_entity
+      end
     else
-      render json: @service_category.errors, status: :unprocessable_entity
+      render json: {error: 'Service_category not found'}, status: :not_found
     end
   end
 
   # DELETE /service_categories/<uuid>
   def destroy
-    @service_category.destroy!
+    if @service_category
+      @service_category.destroy!
+    else
+      render json: {error: 'Service_category not found'}, status: :not_found
+    end
   end
 
   private

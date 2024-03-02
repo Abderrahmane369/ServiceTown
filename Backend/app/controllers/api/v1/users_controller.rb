@@ -15,10 +15,14 @@ class Api::V1::UsersController < ApplicationController
 
   # GET /users/<uuid>
   def show
-    user = @user.as_json
-    user['id'] = user['uuid']
-    user.delete('uuid')
-    render json: @user
+    if @user
+      user = @user.as_json
+      user['id'] = user['uuid']
+      user.delete('uuid')
+      render json: user
+    else
+      render json: {error: 'User not found'}, status: :not_found
+    end
   end
 
   # POST /users
@@ -34,16 +38,24 @@ class Api::V1::UsersController < ApplicationController
 
   # PATCH/PUT /users/<uuid>
   def update
-    if @user.update(user_params)
-      render json: @user
+    if @user
+      if @user.update(user_params)
+        render json: @user
+      else
+        render json: @user.errors, status: :unprocessable_entity
+      end
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render json: {error: 'User not found'}, status: :not_found
     end
   end
 
   # DELETE /users/<uuid>
   def destroy
-    @user.destroy!
+    if @user
+      @user.destroy!
+    else
+      render json: {error: 'User not found'}, status: :not_found
+    end
   end
 
   private
