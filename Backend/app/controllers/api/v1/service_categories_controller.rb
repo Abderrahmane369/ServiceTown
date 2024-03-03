@@ -13,6 +13,20 @@ class Api::V1::ServiceCategoriesController < ApplicationController
     end
   end
 
+  # GET /service_categories/<service_category_uuid>/services/<service_uuid>
+  def service_by_category
+    @service_category = ServiceCategory.find_by(uuid: params[:service_category_uuid])
+    if @service_category
+      @service = @service_category.services.find_by(uuid: params[:service_uuid])
+      if @service
+        render json: @service
+      else
+        render json: { error: 'Service not found' }, status: :not_found
+      end
+    else
+      render json: { error: 'Service Category not found' }, status: :not_found
+    end
+  end
 
   # GET /service_categories
   def index

@@ -68,6 +68,7 @@ class Api::V1::CitiesController < ApplicationController
       end
     else
       render json: {error: 'City not found'}, status: :not_found
+    end
   end
 
   # DELETE /cities/<uuid>
