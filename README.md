@@ -25,4 +25,4 @@ Backend: Ruby on Rails
 ### Contributors
 Abderrahmane Nezhari ([@Abderrahmane369](https://github.com/Abderrahmane369)) - Frontend Developer  
 Hachim Boubacar ([@hachimB](https://github.com/hachimB)) - Backend Developer  
-Abdelwadoud Makhlo ([@AbdelwadoudMakh55](https://github.com/AbdelwadoudMakh55)) - Backend Developer  
+Abdelwadoud Makhlok ([@AbdelwadoudMakh55](https://github.com/AbdelwadoudMakh55)) - Backend Developer  
