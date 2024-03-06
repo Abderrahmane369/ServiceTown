@@ -2,6 +2,16 @@ class Api::V1::UsersController < ApplicationController
   before_action :set_user, only: %i[ show update destroy ]
 
 
+  #GET users/:uuid/user_role
+  def user_role
+    @user = User.find_by(uuid: params[:uuid])
+    if @user
+      render json: { role: @user.role }
+    else
+      render json:  { error: "User not found" }, status: :not_found
+    end
+  end
+
   # GET /users
   def index
     @users = User.all

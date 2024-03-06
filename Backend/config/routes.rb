@@ -4,13 +4,18 @@ Rails.application.routes.draw do
       resources :bookings, param: :uuid
       resources :reviews, param: :uuid
       resources :services, param: :uuid
-      resources :users, param: :uuid
+      resources :users, param: :uuid do
+        get 'user_role', on: :member, action: :user_role, controller: 'users'
+      end
       resources :cities, param: :uuid do
         get 'services', on: :member, action: :show_services, controller: 'cities'
         get 'services/:service_uuid', on: :member, action: :show_service, controller: 'cities'
       end
       resources :service_categories, param: :uuid do
-        get ':uuid/services', on: :collection, action: :services_by_category, controller: 'service_categories'
+        get 'services', on: :member, action: :services_by_category, controller: 'service_categories'
+      end
+      resources :service_categories, param: :service_category_uuid, only: [] do
+        get 'services/:service_uuid', on: :member, action: :service_by_category, controller: 'service_categories'
       end
     end
   end
