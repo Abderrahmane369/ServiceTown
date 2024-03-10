@@ -17,7 +17,6 @@ export default function Footer() {
         <>
             <Flex
                 as="footer"
-                mt="76px"
                 justify="center"
                 gap="100px"
                 borderTop="1px solid"

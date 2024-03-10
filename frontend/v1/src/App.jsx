@@ -1,5 +1,7 @@
-import { Component } from "react";
 import "./App.sass";
+
+// // // // // // // // // // // // // //
+import { Component } from "react";
 import {
     createBrowserRouter,
     createRoutesFromElements,
@@ -23,7 +25,7 @@ const router = createBrowserRouter(
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/terms" element={<TermsPage />} />
-                <Route path="/services" element={<ServicePage />} />
+                <Route path="/services/:servicename" element={<ServicePage />} />
                 <Route path="/pprofile" element={<ProviderProfile />} />
             </Route>
         </>
@@ -34,12 +36,11 @@ const theme = extendTheme({
     styles: {
         global: {
             body: {
-                bg: "#f9fafb"
+                bg: "white"
             }
         }
     }
 });
-
 export default class App extends Component {
     render() {
         return (

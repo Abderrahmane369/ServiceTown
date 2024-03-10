@@ -1,4 +1,5 @@
 import {
+    Badge,
     Box,
     Breadcrumb,
     BreadcrumbItem,
@@ -35,11 +36,11 @@ import Star2022 from "../assets/2022_Star.png";
 
 export default function PProfileAbout() {
     return (
-        <Box mt="15px" w="70%">
+        <Box mt="15px" w="95%">
             <HStack alignItems="flex-end">
                 <Img
                     src={prson}
-                    boxSize="139px"
+                    boxSize="140px"
                     objectFit="cover"
                     borderRadius="5px"
                 />
@@ -49,10 +50,10 @@ export default function PProfileAbout() {
                         Knockout Plumbing & Repipe Inc.
                     </Heading>
                     <HStack fontSize="14px" mb="10px">
-                        <Text color="#2db783" fontWeight="bold">
+                        <Badge color="#2db783">
                             {"     "}
                             Very Good
-                        </Text>
+                        </Badge>
                         <HStack spacing="0" color="#2db783">
                             <IoMdStar />
                             <IoMdStar />
@@ -235,7 +236,7 @@ function TopProstatus() {
             </Heading>
             <Text fontSize="13px">
                 Top Pros are among the highest-rated, most popular professionals
-                on Thumbtack.
+                on Servicetown.
                 <HStack mt="10px" spacing="15px">
                     <VStack>
                         <Img src={Star2022} boxSize="50px" />

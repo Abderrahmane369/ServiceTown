@@ -8,7 +8,7 @@ import {
     Divider,
     Flex,
     Heading,
-    Link,
+    Link as ChaLink,
     List,
     ListIcon,
     Text,
@@ -16,8 +16,8 @@ import {
     SimpleGrid
 } from "@chakra-ui/react";
 
-
 import { services } from "../data/servicesCards_data";
+import { Link } from "react-router-dom";
 
 export default function Services() {
     return (
@@ -25,7 +25,13 @@ export default function Services() {
             <Heading as="h2" fontSize="25px" textAlign="center" mb="15px">
                 Hire a trusted Tasker presto.
             </Heading>
-            <SimpleGrid columns={3} spacingX="24px" spacingY="34px" ml="114px" mr="114px">
+            <SimpleGrid
+                columns={3}
+                spacingX="24px"
+                spacingY="34px"
+                ml="114px"
+                mr="114px"
+            >
                 {services.map((service, index) => (
                     <ServiceCard
                         key={index}
@@ -39,41 +45,59 @@ export default function Services() {
     );
 }
 
-const ServiceCard = ({ img, body, footer }) => (
-    <Card variant="outline" borderColor="gray.300" overflow="hidden">
-        <CardHeader
-            bgImage={`url(${img})`}
-            backgroundSize="cover"
-            backgroundPosition="center"
-            height="200px"
-        />
+const ServiceCard = ({ img, body, footer }) => {
+    const availableServices = [
+        "TV Mounting",
+        "Painting",
+        "Electrical Help",
+        "Handyman",
+        "Plumbing"
+    ];
+    return (
+        <Card variant="outline" borderColor="gray.300" overflow="hidden" >
+            <CardHeader
+                bgImage={`url(${img})`}
+                backgroundSize="cover"
+                backgroundPosition="center"
+                height="200px"
+            />
 
-        <CardBody maxH="120px">
-            <Heading as="h3" fontSize="20px" >
-                {body.h}
-            </Heading>
-            <Text fontSize="19px">{body.p}</Text>
-        </CardBody>
+            <CardBody flexGrow={0}>
+                <Heading as="h3" fontSize="20px">
+                    {body.h}
+                </Heading>
+                <Text fontSize="19px" >{body.p}</Text>
+            </CardBody>
 
-        <Divider width="395px" mx="auto" borderColor="gray.500" />
+            <Divider width="100%" mx="auto" borderColor="gray.500" />
 
-        <CardFooter >
-            <List>
-                {footer.map((f, i) => (
-                    <ListItem key={i}>
-                        <Link>
-                            <Text
-                                href="#"
-                                fontSize="19px"
-                                mb="3px"
-                                color="green.700"
-                            >
-                                {f}
-                            </Text>
-                        </Link>
-                    </ListItem>
-                ))}
-            </List>
-        </CardFooter>
-    </Card>
-);
+            <CardFooter>
+                <List>
+                    {footer.map((f, i) => (
+                        <ListItem key={i}>
+                            <Link to="/services/tv-mounting">
+                                <ChaLink
+                                    href="#"
+                                    fontSize="19px"
+                                    mb="3px"
+                                    color={
+                                        availableServices.includes(f) ||
+                                        availableServices.includes(body.h)
+                                            ? "green.700"
+                                            : "gray.300"
+                                    }
+                                >
+                                    {f}
+                                    {!(
+                                        availableServices.includes(f) ||
+                                        availableServices.includes(body.h)
+                                    ) && " (soon...)"}
+                                </ChaLink>
+                            </Link>
+                        </ListItem>
+                    ))}
+                </List>
+            </CardFooter>
+        </Card>
+    );
+};

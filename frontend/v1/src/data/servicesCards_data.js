@@ -1,4 +1,3 @@
-import boxImg from '../assets/box.png';
 import capImg from '../assets/cap.png';
 import snowImg from '../assets/snow.png';
 import wallImg from '../assets/wall.png';

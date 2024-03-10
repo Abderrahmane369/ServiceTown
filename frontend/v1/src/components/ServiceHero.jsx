@@ -3,47 +3,66 @@ import {
     Box,
     Button,
     Center,
+    HStack,
     Heading,
     Img,
     Input,
     InputGroup,
     InputLeftAddon,
-    Text
+    Text,
+    VStack
 } from "@chakra-ui/react";
-import tvmounting from "../assets/tv-mounting.jpg";
 import { FaLocationDot } from "react-icons/fa6";
+import { currentservices } from "../data/services";
 
-export default function ServiceHero() {
+export default function ServiceHero({ serviceData }) {
+    const service = currentservices[serviceData];
+    const page = service.page;
+    const hero = page.hero;
+
     return (
         <Box
+            position="relative"
             width="100%"
             height="500px"
-            backgroundImage={`url(${tvmounting})`}
+            backgroundImage={hero.img}
             backgroundSize="cover"
             backgroundPosition="center"
+            _before={{
+                content: '""',
+                position: "absolute",
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0,
+                backgroundColor: "rgba(0, 0, 0, 0.12)"
+            }}
         >
             <Center>
                 <Box
                     bg="white"
-                    width="35%"
+                    width="37%"
                     textAlign="center"
-                    p="20px"
-                    mt="100px"
-                    transform={["scale(0.99)", "scale(0.99)"]}
+                    p="30px"
+                    mt="80px"
+                    transform={["scale(0.9789)", "scale(0.9789)"]}
                     borderRadius="5px"
                 >
-                    <Heading size="xl" mb="12px">
-                        TV Mounting Services
+                    <Heading fontSize="35px" mb="11px">
+                        {hero.title} Services
                     </Heading>
-                    <Text fontSize="20px" mb="30px">
-                        Taskers can help with TV mount installation to get you
-                        the best views.
+                    <Text fontSize="18px" mb="30px" w="90%" mx="auto">
+                        {hero.subtitle}
                     </Text>
-                    <Text color="gray" mb="7px" fontSize="15px">
+                    <Text color="gray.500" mb="7px" fontSize="15px">
                         Confirm your location to see quality pros near you.
                     </Text>
-
-                    <InputGroup size="lg">
+                    <InputGroup
+                        size="lg"
+                        variant="filled"
+                        colorScheme="red"
+                        bgColor="white"
+                    >
                         <InputLeftAddon>
                             <Box p="10px">
                                 <FaLocationDot />
@@ -51,9 +70,10 @@ export default function ServiceHero() {
                             <Text>Zip code</Text>
                         </InputLeftAddon>
                         <Input type="number" />
+
+                        <br />
                     </InputGroup>
-                    <br />
-                    <Button colorScheme="blue" width="100%" p="25px">
+                    <Button colorScheme="whatsapp" w="full" p="25px" mt="10px">
                         Search
                     </Button>
                 </Box>
