@@ -14,7 +14,7 @@ import { TiSocialPinterest } from "react-icons/ti";
 
 export default function Footer() {
     return (
-        <>
+        <Box bg="white" position="absolute" w="100%">
             <Flex
                 as="footer"
                 justify="center"
@@ -146,9 +146,9 @@ export default function Footer() {
                     </List>
                 </Box>
             </Flex>
-            <Box textAlign="center" mt="20px" color="gray.500">
+            <Box textAlign="center" mt="20px" color="gray.500" mb="3vh">
                 © Copyright 2024 - 2061 Servicetown, Inc. All Rights Reserved
             </Box>
-        </>
+        </Box>
     );
 }

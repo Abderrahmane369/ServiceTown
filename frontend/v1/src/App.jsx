@@ -1,5 +1,4 @@
-import "./App.sass";
-
+import './App.sass'
 // // // // // // // // // // // // // //
 import { Component } from "react";
 import {
@@ -25,7 +24,10 @@ const router = createBrowserRouter(
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/terms" element={<TermsPage />} />
-                <Route path="/services/:servicename" element={<ServicePage />} />
+                <Route
+                    path="/services/:servicename"
+                    element={<ServicePage />}
+                />
                 <Route path="/pprofile" element={<ProviderProfile />} />
             </Route>
         </>

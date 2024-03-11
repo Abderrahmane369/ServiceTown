@@ -22,8 +22,8 @@ import { Link } from "react-router-dom";
 export default function Services() {
     return (
         <Box mt="38px">
-            <Heading as="h2" fontSize="25px" textAlign="center" mb="15px">
-                Hire a trusted Tasker presto.
+            <Heading as="h2" fontSize="30px" textAlign="center" mb="25px">
+                hire a trusted pro quickly.
             </Heading>
             <SimpleGrid
                 columns={3}
@@ -63,7 +63,7 @@ const ServiceCard = ({ img, body, footer }) => {
             />
 
             <CardBody flexGrow={0}>
-                <Heading as="h3" fontSize="20px">
+                <Heading as="h3" fontSize="20px" color="#142664">
                     {body.h}
                 </Heading>
                 <Text fontSize="19px" >{body.p}</Text>
@@ -83,7 +83,7 @@ const ServiceCard = ({ img, body, footer }) => {
                                     color={
                                         availableServices.includes(f) ||
                                         availableServices.includes(body.h)
-                                            ? "green.700"
+                                            ? "gray.700"
                                             : "gray.300"
                                     }
                                 >
@@ -91,7 +91,7 @@ const ServiceCard = ({ img, body, footer }) => {
                                     {!(
                                         availableServices.includes(f) ||
                                         availableServices.includes(body.h)
-                                    ) && " (soon...)"}
+                                    ) && "  (UNAVAILABLE)"}
                                 </ChaLink>
                             </Link>
                         </ListItem>

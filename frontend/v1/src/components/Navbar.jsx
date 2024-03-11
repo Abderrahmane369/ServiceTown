@@ -75,16 +75,16 @@ const Logo = () => {
                 _hover={{ textDecoration: "none" }}
                 draggable={false}
             >
-                <Heading as="h1" className="logo" fontSize={30}>
+                <Heading as="h1" className="logo" fontSize={35}>
                     <Text
                         display="inline"
-                        color="#302f34"className="logo"
+                        color="#1a202c"className="logo1"
                     >
                         service
                     </Text>
                     <Text
                         display="inline"
-                        color="#21c351"className="logo"
+                        color="#ff2e93"className="logo2"
                     >
                         town
                     </Text>
@@ -107,7 +107,7 @@ const GetAuthened = () => {
                 </Link>
             </Button>
 
-            <Button colorScheme="blue">
+            <Button bgColor="#00e6b3" color="white">
                 <Link
                     href="/signup"
                     fontWeight="500"

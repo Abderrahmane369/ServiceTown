@@ -20,6 +20,7 @@ import { Form } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, gprovider } from "../config/firebase";
+import { cities } from "../data/cities.js";
 
 // Sign in with google
 export const googleSignIn = async () => {
@@ -40,15 +41,19 @@ export default function FormSignUp() {
     // Styles
     const styles = {
         box: {
-            p: "35px",
+            p: "30px",
             mx: "auto",
-            mt: "2%",
-            mb: "7%",
+            mt: "3%",
+            mb: "3%",
+            pt: "40px",
+            pb: "40px",
             w: "512px",
-            bg: "white",
+            bgColor: "white",
             border: "1px solid",
-            borderRadius: "5px",
-            borderColor: "gray.200"
+            borderRadius: "10px",
+            borderColor: "gray.200",
+            boxShadow:
+                "rgba(0, 230, 179, 0.4) 0px 5px, rgba(0, 230, 179, 0.3) 0px 10px, rgba(0, 230, 179, 0.2) 0px 15px, rgba(0, 230, 179, 0.1) 0px 20px, rgba(0, 230, 179, 0.05) 0px 25px"
         },
         googleBtn: {
             size: "lg",
@@ -60,18 +65,24 @@ export default function FormSignUp() {
 
     return (
         <Box>
-            <Heading as="h1" textAlign="center" fontSize="35px" mt="10vh">
+            <Heading
+                as="h1"
+                textAlign="center"
+                fontSize="40px"
+                mt="9vh"
+                color="#000"
+            >
                 Create your account
             </Heading>
             <Box {...styles.box}>
                 <Form>
-                    <Stack align="center" spacing="20px">
+                    <Stack align="center" spacing="13px">
                         <InputFullName />
                         <InputEmail />
                         <InputPassword />
                         <InputPhone />
 
-                        <HStack width="100%" align="center" mb="35px">
+                        <HStack width="100%" align="center" mb="25px" mt="30px">
                             <RadioRole />
                             <CitySelector />
                         </HStack>
@@ -87,7 +98,7 @@ export default function FormSignUp() {
                 </Form>
                 <Stack>
                     <br />
-                    <Box position="relative">
+                    <Box position="relative" my="5px">
                         <Divider border="1px solid" borderColor="gray.300" />
                         <AbsoluteCenter bg="white" px="4" color="gray.600">
                             OR
@@ -114,7 +125,7 @@ export default function FormSignUp() {
                     </Box>
                 </Stack>
             </Box>
-            <Box mt="-50px" mx="auto" width="100%">
+            <Box my="10vh" mx="auto" width="100%">
                 <Text textAlign="center">
                     {" "}
                     Already have an account?{" "}
@@ -136,7 +147,8 @@ const InputFullName = () => {
                 <Input
                     type="text"
                     fontSize="15px"
-                    borderColor="gray.400"
+                    variant="filled"
+                    bgColor="#f1f1f1"
                     size="lg"
                     focusBorderColor="black"
                 />
@@ -152,9 +164,10 @@ const InputEmail = ({ setEmail }) => {
                 <FormLabel>Email</FormLabel>
                 <Input
                     fontSize="15px"
+                    variant="filled"
                     type="email"
+                    bgColor="#f1f1f1"
                     size="lg"
-                    borderColor="gray.400"
                     focusBorderColor="black"
                     onChange={(e) => {
                         setEmail(e.target.value);
@@ -172,9 +185,10 @@ const InputPassword = ({ setPassword }) => {
                 <FormLabel>Password</FormLabel>
                 <Input
                     fontSize="15px"
+                    variant="filled"
                     type="password"
                     size="lg"
-                    borderColor="gray.400"
+                    bgColor="#f1f1f1"
                     focusBorderColor="black"
                     onChange={(e) => {
                         setPassword(e.target.value);
@@ -195,7 +209,8 @@ const InputPhone = () => {
                     <Input
                         fontSize="15px"
                         type="tel"
-                        borderColor="gray.400"
+                        bgColor="#f1f1f1"
+                        variant="filled"
                         focusBorderColor="black"
                         onChange={(e) => {
                             setPassword(e.target.value);
@@ -213,9 +228,11 @@ const CitySelector = () => {
             <FormControl isRequired>
                 <FormLabel>City</FormLabel>
                 <Select placeholder="Select city" variant="flushed">
-                    <option value="option1">Option 1</option>
-                    <option value="option1">Option 1</option>
-                    <option value="option1">Option 1</option>
+                    {cities.map((city, index) => (
+                        <option key={index} value={city}>
+                            {city}
+                        </option>
+                    ))}
                 </Select>
             </FormControl>
         </Box>
@@ -227,10 +244,10 @@ const RadioRole = () => {
         <Box width="100%">
             <FormControl isRequired>
                 <FormLabel>Role</FormLabel>
-                <RadioGroup>
+                <RadioGroup colorScheme="blue">
                     <Stack direction="row">
-                        <Radio value="1">Customer</Radio>
-                        <Radio value="2">Provider</Radio>
+                        <Radio value="customer">Customer</Radio>
+                        <Radio value="provider">Provider</Radio>
                     </Stack>
                 </RadioGroup>
             </FormControl>
@@ -245,7 +262,7 @@ const CreateAccButton = ({ onClick }) => {
                 size="lg"
                 type="submit"
                 variant="solid"
-                colorScheme="blue"
+                color="#00e6b3"
                 width="100%"
                 onClick={onClick}
             >
