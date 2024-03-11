@@ -21,6 +21,7 @@ import { FcGoogle } from "react-icons/fc";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, gprovider } from "../config/firebase";
 import { cities } from "../data/cities.js";
+import { useEffect, useState } from "react";
 
 // Sign in with google
 export const googleSignIn = async () => {
@@ -271,3 +272,21 @@ const CreateAccButton = ({ onClick }) => {
         </Box>
     );
 };
+
+function PostList() {
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:3000/users")
+            .then((response) => response.json())
+            .then((data) => setPosts(data));
+    }, []);
+
+    return (
+        <ul>
+            {posts.map((post) => (
+                <li key={post.id}>{post.title}</li>
+            ))}
+        </ul>
+    );
+}
