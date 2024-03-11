@@ -30,12 +30,12 @@ module Back
     config.api_only = true
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins '52.91.126.200'
+        origins '*'
         resource '*',
           headers: :any,
           methods: [:get, :post, :put, :patch, :delete, :options, :head],
-          credentials: true
+          credentials: false
       end
     end
   end
-end 
+end
