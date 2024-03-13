@@ -1,6 +1,6 @@
 # README
 
-## Web Marketplace
+## Service towb
 
 
 ### Introduction
@@ -18,9 +18,9 @@ Welcome to our Web Marketplace project! This project aims to create a comprehens
 
 
 ### Technologies Used
-Frontend: React.js
+Frontend: HTML, CSS, SASS, JSX, React, Chakra UI
 
-Backend: Ruby on Rails
+Backend: Ruby on Rails, MySQL
 
 ### Contributors
 Abderrahmane Nezhari ([@Abderrahmane369](https://github.com/Abderrahmane369)) - Frontend Developer  
