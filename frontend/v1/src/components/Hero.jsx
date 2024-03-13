@@ -230,7 +230,7 @@ function ServicesBarAdvanced_hero({ onServiceSelect }) {
                                 marginX: "auto",
                                 width: "0px",
                                 height: "17px",
-                                borderColor: "#00e6b3",
+                                borderColor: "#ff2e93",
                                 borderBottom: "3px solid"
                             }
                         })}
@@ -241,11 +241,11 @@ function ServicesBarAdvanced_hero({ onServiceSelect }) {
                             marginX: "auto",
                             width: "0px",
                             height: "17px",
-                            borderColor: "#00e6b3",
+                            borderColor: "#ff2e93",
                             borderBottom: "3px solid"
                         }}
                         _hover={{
-                            color: "#00e6b3",
+                            color: "#ff2e93",
                             paddingTop: "2px",
                             _after: {
                                 content: "''",
@@ -253,11 +253,11 @@ function ServicesBarAdvanced_hero({ onServiceSelect }) {
                                 marginX: "auto",
                                 width: "50px",
                                 height: "17px",
-                                borderColor: "#00e6b3",
+                                borderColor: "#ff2e93",
                                 borderBottom: "3px solid",
                                 _hover: {
                                     width: "60px",
-                                    borderColor: "#00e6b3"
+                                    borderColor: "#ff2e93"
                                 },
                                 transition:
                                     "all 0.1s cubic-bezier(0.34, 1.56, 0.64, 1)"
@@ -272,7 +272,7 @@ function ServicesBarAdvanced_hero({ onServiceSelect }) {
                             variant="link"
                             borderRadius="0%"
                             colorScheme="black"
-                            _hover={{ color: "#ff2e93" }}
+                            _hover={{ color: "#00e6b3" }}
                             _active={{
                                 color: "gray",
                                 borderRadius: "70%"

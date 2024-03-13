@@ -28,10 +28,7 @@ class Api::V1::CitiesController < ApplicationController
   def index
     @cities = City.all
     cities_hash = @cities.as_json
-    cities_hash.each do |city|
-      city['id'] = city['uuid']
-      city.delete('uuid')
-    end
+
     render json: cities_hash
   end
 
@@ -39,8 +36,7 @@ class Api::V1::CitiesController < ApplicationController
   def show
     if @city
       city = @city.as_json
-      city['id'] = city['uuid']
-      city.delete('uuid')
+
       render json: city
     else
       render json: {error: 'City not found'}, status: :not_found

@@ -26,12 +26,20 @@ import { providers } from "../data/servicesProviders";
 
 export default function ServicesList({ serviceData }) {
     const cproviders = providers[serviceData];
+    const providerers = {
+        handyman: "Handyman",
+        "electrical-help": "Electricians",
+        plumbing: "Plumbers",
+        landscaping: "Landscapers",
+        "tv-mounting": "TV Mounters",
+        painting: "Painters"
+    };
     return (
         <Container maxW="65%" mt="10vh" p="20px" borderRadius="2px">
             <Box>
                 <HStack>
                     <Heading as="h3" textAlign="left" fontSize="18px">
-                        Top 10 Plumbers near you
+                        Top 10 {providerers[serviceData]} near you
                     </Heading>
                     <GrCircleInformation color="#676d73" />
                 </HStack>
@@ -106,11 +114,11 @@ function ServiceCard({ provider }) {
                         </>
                     )}
 
-                    <Text color="#2db783" fontWeight="bold">
+                    <Text color="#ff2e93" fontWeight="bold">
                         {" "}
                         {provider.rating}
                     </Text>
-                    <HStack spacing="0" color="#2db783" mb="3px">
+                    <HStack spacing="0" color="#ff2e93" mb="3px">
                         <IoMdStar size="17px" />
                         <IoMdStar size="17px" />
                         <IoMdStar size="17px" />
@@ -202,12 +210,16 @@ function ServiceCard({ provider }) {
                 <Text>{provider.callPrice}</Text>
 
                 <Button
-                    colorScheme="whatsapp"
+                    bgColor="#00e6b3"
                     fontSize="15px"
+                    color="white"
                     mt="110%"
                     p="20px"
+                    
                 >
+                    <Link href="/pprofile" color="white">
                     View profile
+                    </Link>
                 </Button>
             </Box>
         </Flex>

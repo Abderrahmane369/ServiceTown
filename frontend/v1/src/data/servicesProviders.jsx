@@ -1208,5 +1208,54 @@ export const providers = {
             similarJobs: 0,
             callPrice: "$95/hour"
         }
+    ],
+    'painting': [
+        {
+            providerName: "Mynor E Garcia Painting Residential and Commercial",
+            imgURL: "https://production-next-images-cdn.thumbtack.com/i/506918088221319171/desktop/standard/400square-legacy",
+            hires: 44,
+            rating: "Very good 4.6",
+            ratingCount: 19,
+            serviceDescription: "Painting Residential and Commercial",
+            comment: "Debbie E. says, 'Their work was extremely well done would recommend them to anyone'",
+            isOnline: false, // Assuming not online based on the HTML snippet
+            inHighDemand: false, // Assuming not in high demand based on the HTML snippet
+            isGreatValue: false, // Assuming not a great value based on the HTML snippet
+            isLiscensed: false, // Assuming not licensed based on the HTML snippet
+            isAvailable: false, // Assuming not available based on the HTML snippet
+            isTopPro: true, // Indicated by the "Top Pro" badge
+            isLicensed: false, // Assuming not licensed based on the HTML snippet
+            respondTime: "4 hours", // Extracted from the HTML snippet
+            similarJobs: 0, // Assuming no similar jobs based on the HTML snippet
+            callPrice: (
+                <div>
+                    <Text fontWeight="bold">Free on-site estimate</Text>
+                </div>
+            )
+        },
+        {
+            providerName: "MiProPaint LLC",
+            imgURL: "https://production-next-images-cdn.thumbtack.com/i/467233821565141001/desktop/standard/400square-legacy",
+            hires: 2,
+            rating: "Exceptional 5.0",
+            ratingCount: 7,
+            serviceDescription: "Painting Residential and Commercial",
+            comment: "Arlene N. says, 'Our painter was very good. The work quality was excellent. Punctuality was...'",
+            isOnline: false, // Assuming not online based on the HTML snippet
+            inHighDemand: false, // Assuming not in high demand based on the HTML snippet
+            isGreatValue: false, // Assuming not a great value based on the HTML snippet
+            isLiscensed: false, // Assuming not licensed based on the HTML snippet
+            isAvailable: false, // Assuming not available based on the HTML snippet
+            isTopPro: true, // Indicated by the "Exceptional" rating
+            isLicensed: false, // Assuming not licensed based on the HTML snippet
+            respondTime: "54 min", // Extracted from the HTML snippet
+            similarJobs: 0, // Assuming no similar jobs based on the HTML snippet
+            callPrice: (
+                <div>
+                    <Text fontWeight="bold">Free on-site estimate</Text>
+                </div>
+            ),
+
+        },
     ]
 };

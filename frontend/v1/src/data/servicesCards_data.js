@@ -24,6 +24,7 @@ export const services = [
       'Personal Assistant',
       'Hang Pictures',
       'Yard Work Services',
+      "landscaping Services",
       'Wait in Line',
       'Closet Organization Service'
     ]

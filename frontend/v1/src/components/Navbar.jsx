@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import styles from "./styles";
 import { IoIosLogOut } from "react-icons/io";
-import { getAuth } from "firebase/auth";
+import { getAuth, updateProfile } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { signOut } from "firebase/auth";
 import { get } from "react-hook-form";
@@ -24,12 +24,13 @@ import { get } from "react-hook-form";
 
 export default function Navbar() {
     const [user, setUser] = useState(null);
+    const [localUser, setLocalUser] = useState(null);
     const auth = getAuth();
 
     useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged((user) => {
-            if (user) {
-                setUser(user);
+        const unsubscribe = auth.onAuthStateChanged((u) => {
+            if (u) {
+                setUser(u);
                 console.log("User is signed in");
             } else {
                 setUser(null);
@@ -41,8 +42,20 @@ export default function Navbar() {
         return () => unsubscribe();
     }, [auth]);
 
+    useEffect(() => {
+        if (localStorage.getItem("user_id")) {
+            setLocalUser({
+                id: localStorage.getItem("user_id"),
+                name: localStorage.getItem("user_name"),
+                email: localStorage.getItem("user_email"),
+                phone: localStorage.getItem("user_phone"),
+                role: localStorage.getItem("user_role")
+            });
+        }
+    }, [localUser]);
+
     return (
-        <Flex {...styles.navbar} >
+        <Flex {...styles.navbar}>
             <Logo />
 
             <Spacer />
@@ -51,14 +64,14 @@ export default function Navbar() {
                 <Services_DropDown />
             </Box>
             <Box pr="20px">
-                <Link href="/blog" fontWeight="500" fontSize="medium">
+                <Link href="https://github.com/Abderrahmane369/ServiceTown" fontWeight="500" fontSize="medium">
                     Blog
                 </Link>
             </Box>
 
-            {user ? (
+            {user || localUser ? (
                 <>
-                    <UserInfo />
+                    <UserInfo localUser={localUser} />
                 </>
             ) : (
                 <GetAuthened />
@@ -76,16 +89,10 @@ const Logo = () => {
                 draggable={false}
             >
                 <Heading as="h1" className="logo" fontSize={35}>
-                    <Text
-                        display="inline"
-                        color="#1a202c"className="logo1"
-                    >
+                    <Text display="inline" color="#1a202c" className="logo1">
                         service
                     </Text>
-                    <Text
-                        display="inline"
-                        color="#ff2e93"className="logo2"
-                    >
+                    <Text display="inline" color="#ff2e93" className="logo2">
                         town
                     </Text>
                 </Heading>
@@ -130,6 +137,9 @@ const LogOut = () => {
             console.error(err);
         }
     };
+    const clearLocalStorage = () => {
+        localStorage.clear();
+    };
     return (
         <Box>
             <Button
@@ -138,7 +148,10 @@ const LogOut = () => {
                 _hover={{ textDecoration: "none" }}
                 colorScheme="red"
                 rightIcon={<IoIosLogOut size={23} />}
-                onClick={logout}
+                onClick={() => {
+                    logout();
+                    clearLocalStorage();
+                }}
                 p="0px"
             >
                 <Link href="/login" fontWeight="500" fontSize="medium">
@@ -149,9 +162,11 @@ const LogOut = () => {
     );
 };
 
-const UserInfo = () => {
+const UserInfo = ({ localUser }) => {
     const auth = getAuth();
-    const { displayName, photoURL } = auth.currentUser;
+    const { displayName, photoURL } = auth.currentUser
+        ? auth.currentUser
+        : { displayName: localUser.name, photoURL: null };
 
     return (
         <HStack ml="14px">
@@ -187,23 +202,23 @@ const Services_DropDown = (p) => {
                 <Heading fontSize="18px" ml="10px" mb="5px" fontWeight="500">
                     Popular Tasks
                 </Heading>
-                <MenuItem>Furniture Assembly</MenuItem>
-                <MenuItem>TV Mounting</MenuItem>
-                <MenuItem>Help Moving</MenuItem>
-                <MenuItem>Handyman</MenuItem>
-                <MenuItem>Yard Work</MenuItem>
-                <MenuItem>Painting</MenuItem>
-                <MenuItem>Mounting Services</MenuItem>
+                <MenuItem><Link href="/services/landscaping">Landscaping</Link> </MenuItem>
+                <MenuItem><Link href="/services/tv-mounting">TV Mounting</Link></MenuItem>
+                <MenuItem isDisabled>Help Moving</MenuItem>
+                <MenuItem><Link href="/services/handyman">Handyman</Link></MenuItem>
+                <MenuItem isDisabled>Yard Work</MenuItem>
+                <MenuItem><Link href="/services/painting">Painting</Link></MenuItem>
+                <MenuItem isDisabled>Mounting Services</MenuItem>
 
-                <MenuItem>Electrical Help</MenuItem>
-                <MenuItem>Plumbing</MenuItem>
-                <MenuItem>Hang Pictures</MenuItem>
-                <MenuItem>Lighting Installation</MenuItem>
-                <MenuItem>Cleaning Services</MenuItem>
-                <MenuItem>Delivery Service</MenuItem>
-                <MenuItem>Contactless Tasks</MenuItem>
-                <MenuItem>IKEA Services</MenuItem>
-                <MenuItem>All Services</MenuItem>
+                <MenuItem><Link href="/services/electrical-help">Electrical Help</Link></MenuItem>
+                <MenuItem><Link href="/services/plumbing">Plumbing</Link></MenuItem>
+                <MenuItem isDisabled>Hang Pictures</MenuItem>
+                <MenuItem isDisabled>Lighting Installation</MenuItem>
+                <MenuItem isDisabled>Cleaning Services</MenuItem>
+                <MenuItem isDisabled>Delivery Service</MenuItem>
+                <MenuItem isDisabled>Contactless Tasks</MenuItem>
+                <MenuItem isDisabled>IKEA Services</MenuItem>
+                <MenuItem isDisabled>All Services</MenuItem>
             </MenuList>
         </Menu>
     );

@@ -18,7 +18,9 @@ const styles = {
             bg: "white",
             border: "1px solid",
             borderRadius: "5px",
-            borderColor: "gray.200"
+            borderColor: "gray.200",
+            boxShadow:
+            "rgba(0, 230, 179, 0.4) 0px 5px, rgba(0, 230, 179, 0.3) 0px 10px, rgba(0, 230, 179, 0.2) 0px 15px, rgba(0, 230, 179, 0.1) 0px 20px, rgba(0, 230, 179, 0.05) 0px 25px"
         },
         heading: {
             as: "h1",

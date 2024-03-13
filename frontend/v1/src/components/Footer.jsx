@@ -61,7 +61,7 @@ export default function Footer() {
                             <Link>How to use Servicetown</Link>
                         </ListItem>
                         <ListItem>
-                            <Link>Sign up</Link>
+                            <Link href="/signup">Sign up</Link>
                         </ListItem>
                         <ListItem>
                             <Link>Get the app</Link>

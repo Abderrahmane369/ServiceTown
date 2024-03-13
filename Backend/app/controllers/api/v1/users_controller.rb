@@ -16,10 +16,7 @@ class Api::V1::UsersController < ApplicationController
   def index
     @users = User.all
     users_hash = @users.as_json
-    users_hash.each do |user|
-      user['id'] = user['uuid']
-      user.delete('uuid')
-    end
+
     render json: users_hash
   end
 
@@ -27,8 +24,6 @@ class Api::V1::UsersController < ApplicationController
   def show
     if @user
       user = @user.as_json
-      user['id'] = user['uuid']
-      user.delete('uuid')
       render json: user
     else
       render json: {error: 'User not found'}, status: :not_found

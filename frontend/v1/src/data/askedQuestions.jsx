@@ -213,5 +213,26 @@ export const questions = {
             content: `Because a handyman needs to be physically present to perform work, they have not traditionally offered remote or virtual services. However, if you come across handyman profiles that state they offer remote services, message the handymen to see what those services include.
     Confer with your handyman to see if consulting over video calls is possible. The professional may be able to walk you through performing basic plumbing, electrical, HVAC and other types of repairs around the house. Compare the handymen in your area side-by-side online, and ask whether they’re willing to help remotely.`
         }
+    ],
+    painting: [
+        {
+            title: "How much does it cost to paint a house?",
+            content: `The national average cost to paint a home’s exterior is $2,780. Here are a few examples of average exterior painting costs: 1,500 square foot home: $1,000-$3,000. 3,000 square foot home: $3,000-$4,500. 4,000 square foot home: $4,000-$6,000. The cost to paint the exterior of a 1,500 square-foot home will naturally be lower than the cost to paint a 6,000 square-foot home. A starting point of around $1,000 is a safe bet. But if your home has multiple stories or has old paint that needs to be scraped, you can expect to pay more.`
+        },
+        {
+            title: "How can you tell if a paint job is bad?",
+            content:
+                "If you’re seeing blotches, bubbles, streaks or mismatching colors on your wall, those are all signs that you should hire someone like a Tasker with more experience to come help with your home painting project. Taskers will be able to perform the necessary prep work and techniques to ensure your walls are smooth and beautiful."
+        },
+        {
+            title: "Do painters supply the paint?",
+            content:
+                "You can buy the paint yourself or you can ask Taskers to include a quote for picking up paint for you. Just be sure to let them know what type of paint and what color(s) you would like them to get for you! "
+        },
+        {
+            title: 'How long should it take to paint a room?',
+            content:
+                'The time it takes to paint a room varies, depending on a few factors. For example, the size of the room, the type of paint, and the condition of the walls. A small room can take as little as a few hours to paint, while a large room might take a full day. If you’re painting the walls and ceiling, it might take a few days to finish the project.'
+        }
     ]
 };

@@ -45,16 +45,35 @@ export default function Services() {
     );
 }
 
+
 const ServiceCard = ({ img, body, footer }) => {
     const availableServices = [
         "TV Mounting",
         "Painting",
         "Electrical Help",
         "Handyman",
-        "Plumbing"
+        "Plumbing",
+        "Landscaping Services"
     ];
+    const urls = [
+        "tv-mounting",
+        "painting",
+        "electrical-help",
+        "handyman",
+        "plumbing",
+        "landscaping"
+    ];
+
+    const corspURL = {
+        "TV Mounting": "tv-mounting",
+        Painting: "painting",
+        "Electrical Help": "electrical-help",
+        Handyman: "handyman",
+        Plumbing: "plumbing",
+        "Landscaping Services": "landscaping"
+    };
     return (
-        <Card variant="outline" borderColor="gray.300" overflow="hidden" >
+        <Card variant="outline" borderColor="gray.300" overflow="hidden">
             <CardHeader
                 bgImage={`url(${img})`}
                 backgroundSize="cover"
@@ -66,7 +85,7 @@ const ServiceCard = ({ img, body, footer }) => {
                 <Heading as="h3" fontSize="20px" color="#142664">
                     {body.h}
                 </Heading>
-                <Text fontSize="19px" >{body.p}</Text>
+                <Text fontSize="19px">{body.p}</Text>
             </CardBody>
 
             <Divider width="100%" mx="auto" borderColor="gray.500" />
@@ -75,23 +94,26 @@ const ServiceCard = ({ img, body, footer }) => {
                 <List>
                     {footer.map((f, i) => (
                         <ListItem key={i}>
-                            <Link to="/services/tv-mounting">
+                            <Link
+                                to={
+                                    availableServices.includes(f)
+                                        ? `/services/${corspURL[f]}`
+                                        : "#"
+                                }
+                            >
                                 <ChaLink
                                     href="#"
                                     fontSize="19px"
                                     mb="3px"
                                     color={
-                                        availableServices.includes(f) ||
-                                        availableServices.includes(body.h)
+                                        availableServices.includes(f)
                                             ? "gray.700"
                                             : "gray.300"
                                     }
                                 >
                                     {f}
-                                    {!(
-                                        availableServices.includes(f) ||
-                                        availableServices.includes(body.h)
-                                    ) && "  (UNAVAILABLE)"}
+                                    {!availableServices.includes(f) &&
+                                        "  (UNAVAILABLE)"}
                                 </ChaLink>
                             </Link>
                         </ListItem>
@@ -101,3 +123,4 @@ const ServiceCard = ({ img, body, footer }) => {
         </Card>
     );
 };
+

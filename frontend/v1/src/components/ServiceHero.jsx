@@ -73,7 +73,7 @@ export default function ServiceHero({ serviceData }) {
 
                         <br />
                     </InputGroup>
-                    <Button colorScheme="whatsapp" w="full" p="25px" mt="10px">
+                    <Button bgColor="#ff2e93" color="white" w="full" p="25px" mt="10px">
                         Search
                     </Button>
                 </Box>
