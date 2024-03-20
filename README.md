@@ -5,6 +5,7 @@
 
 ### Introduction
 Welcome to our Web Marketplace project! This project aims to create a comprehensive online marketplace where users can buy and sell goods or services.
+![image](https://github.com/Abderrahmane369/ServiceTown/assets/133237331/14700a3d-6002-4839-9b31-1c3f19f4db2c)
 
 
 ### Features
